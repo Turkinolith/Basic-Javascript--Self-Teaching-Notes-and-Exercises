@@ -1,0 +1,8 @@
+String - let name = 'Larry'; // String Literal
+Number - let age = 38; //Number Literal
+Boolean - let is_Approved = true; //Boolean Literal
+Undefined - let first_Name; //if not explicitly defined is undefined, can also be explicitly set to undefined.
+Null - let last_Name = null; //IE: can be used for clearing values
+
+ES6 introduces another primitive:
+symbol
