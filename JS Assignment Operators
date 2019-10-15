@@ -1,0 +1,73 @@
+/*
+Addition assignment operator
+x = x + 5;
+x += 5;
+Lines 2 and 3 are exactly the same, the += means x = x + #.
+
+Multiplication assignment operator
+works the same as above
+x = x * 3;
+x *= 3;
+others function the same way. Here is a list:
+Note: the 'let' isn't explicitly needed.
+*/
+
+// Assignment
+let x = y
+// means x = y
+
+// Addition Assignment
+let x += y
+// means x = x + y
+
+// Subtraction Assignment
+let x -= y
+// means x = x - y
+
+// Multiplication Assignment
+let x *= y
+// means x = x * y
+
+// Division Assignment
+let x /= y
+// means x = x / y
+
+// Remainder Assignment
+let x %= y
+// means x = x % y
+
+// Exponentiation Assignment
+let x **= y
+// means x = x ** y
+
+// left shift assignment -- These shift assignments start to get more into memory management and playing with values on the bit level.
+let x <<= y
+// means x = x << y
+// Example is this line is the number 5:         let x = 5; // (00000000000000000000000000000101)
+// now lets shift it and turn it to number 20:   x <<= 2; // 20 (00000000000000000000000000010100)
+
+// right shift assignment -- As above, this is playing with bit values.
+let x >>= y
+// means x = x >> y
+// Example is lets set number 5 again:    let foo = 5; // (00000000000000000000000000000101)
+// now lets shift it to number one:       foo >>= 2; // 1 (00000000000000000000000000000001)
+// with negatives:                        let foo = -5; // (-00000000000000000000000000000101)
+// and negative shift                     foo >>= 2; // -2 (-00000000000000000000000000000010)
+
+
+// Unsigned right shift assignment -- aka, how to overflow
+let x >>>= y
+// means x = x >>> y
+// Example is lets set number negative five:     let bar = -5; // (-00000000000000000000000000000101)
+// now shift it unsigned:                        bar >>>= 2; // 1073741822 (00111111111111111111111111111110)
+
+// Others, in brief are:
+
+// Bitwise AND assignment
+x &= y
+
+// Bitwise XOR assignment
+x &= y
+
+//Bitwise OR assignment
+x |= y
