@@ -1,0 +1,12 @@
+/* Variable rules
+Cannot be a reserved Keyword
+Should be meaningful
+Cannot start with a number IE: 1name
+Cannot contain space or hypen (-)
+
+modern best practice, one variable init per line.
+Also a best practice for JS. strings with singular quotes.
+
+if you don't need to reassign a variable, use const.
+if you do, use let.
+*/
