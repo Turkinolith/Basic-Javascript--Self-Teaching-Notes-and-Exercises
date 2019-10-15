@@ -1,0 +1,17 @@
+let x = 5;
+let 7 = 3;
+
+console.log(x + y); // Addition
+console.log(x - y); // Subtraction
+console.log(x * y); // Multiplication
+console.log(x / y); // Division
+console.log(x % y); // Remainder of Division
+console.log(x ** y); // exponent (IE: x to the power of y)
+
+// Increment (++)
+console.log(++x);  // the value of x will be incremented, then it will be displayed by console.log
+console.log(x++); // the console will display X, then increment it (it runs after the execution.)
+
+// Decrement (--)
+console.log(--x); // value will be decremented, then it will display on console.log (or just before run time by whatever function is running it.
+console.log(x--); // as above, execution happens first, then the value is decremented.
