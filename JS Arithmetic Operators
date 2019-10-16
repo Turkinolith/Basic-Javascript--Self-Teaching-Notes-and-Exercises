@@ -15,3 +15,13 @@ console.log(x++); // the console will display X, then increment it (it runs afte
 // Decrement (--)
 console.log(--x); // value will be decremented, then it will display on console.log (or just before run time by whatever function is running it.
 console.log(x--); // as above, execution happens first, then the value is decremented.
+
+// Test time!
+// What is the value of y? 
+let x = 10; 
+let y = x++;
+
+// y = 10
+// but what about x? remember that increment happens AFTER execution
+// x = 11
+// So, even though we were setting the value of y, it ALSO incremented X.
