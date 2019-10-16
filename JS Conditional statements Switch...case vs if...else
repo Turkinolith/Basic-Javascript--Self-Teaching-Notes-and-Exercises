@@ -1,0 +1,78 @@
+//Javascript has 2 conditional statements:
+//if...else
+//switch...case
+
+/*
+___If...else___Structure___
+
+if (condition) {
+	statement
+}
+else if (another condition) {
+	statement
+}
+else 
+	statement
+
+*/
+
+// Example
+// If hour is between 6am and 12pm: Good morning!
+// if hour is between 12pm and 6pm: Good afternoon!
+// Otherwise: Good evening!
+
+let hour = 10;
+if (hour >= 6 && hour < 12) {
+	console.log('Good morning');
+} else {
+	if (hour >= 12 && hour < 18) {
+		console.log('Good afternoon');
+		} else {
+			console.log('Good evening!');
+			}
+	}
+	
+
+//___switch...case____
+// instead of a condition, you put a variable in the paren.
+// add one or more case statements that are used to compare the variable value with something.
+// you can have as many cases as you want, and a default if none of them match.
+// Can use switch...case with strings, numbers, etc. bools are less common and would make more sense to use an if statement for those.
+switch (variable) {
+	case *****:  // Thing to check value against
+		****** // Whatever you want to have happen if value matches.
+		break; // Break is important, if you don't have a break it'll continue to execute any following cases as well as the above one.
+	
+	case @@@@@:
+		******
+		break;
+	
+	default:	// Does not need a break, as soon as default finishes its statements it'll end the switch block. IE: default should always be last.
+		********
+}
+
+// Example: let's say var role represents the role of the current user.
+// we want to see if user is a guest, mod, or admin.
+
+let role;
+switch (role) {
+	case 'guest':
+		console.log('Guest User');
+		break;
+		
+	case 'moderator':
+		console.log('Moderator User');
+		break;
+		
+	default:
+		console.log('Unknown User');
+}
+
+// You can copy a switch...case logic using an if...else as well.
+// Remember, you don't need curl braces if the statement is a single line, you DO need curls for 2 or more statements.
+// ex of the above in an if...else
+if (role === 'guest') console.log('Guest');
+else if (role === 'moderator') console.log('Moderator');
+else console.log('Unknown User');
+
+// it's cleaner and shorter as an If...else, but you can still use switch...case if you prefer something more explicit. its personal preference.
