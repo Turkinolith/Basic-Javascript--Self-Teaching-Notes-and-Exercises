@@ -1,0 +1,19 @@
+// Javascript evaluates left to right.
+// given the expression: false||1||2
+// javascript will return '1', because as soon as it reaches a 'truthy' statement, it returns the value and ignores anything else.
+// this concept is called Short Circuiting.
+
+// example using a real situation
+// you are making a website that checks the users perferred color of shirt
+let user_color = 'red';
+let default_color = 'blue';
+let current_color = user_color || default_color;
+
+// in plain english: user color OR default color, if we have a user_color set, we will use that, if not we go to default.
+// in the above example, we will get 'red'.
+
+let user_color = undefined;
+let default_color = 'blue';
+let current_color = user_color || default_color;
+
+// in this example, we get 'blue' as the result since user_color is a 'falsy' value.
