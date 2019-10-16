@@ -1,0 +1,13 @@
+// Javascript has 3 types of logic operators
+// Logical AND (&&) - IE: console.log(true && true); //expected output 'true'
+// example using the concept of a loan approval
+let high_income = true;
+let good_credit = true;
+let eligible_for_loan = high_income && good_credit; // expected output 'true'
+console.log('Eligible', eligible_for_loan);
+
+// Logical OR (||)
+
+// NOT (!)
+let application_refused = !eligible_for_loan; 
+console.log('Application Refused', application_refused)
