@@ -1,0 +1,18 @@
+let person = {
+    first_name: 'Larry',
+    age: 38
+}
+
+// Dot Notation
+console.log(person.first_name);
+//default choice, shorter, more concise
+
+// Bracket Notation
+console.log(person['first_name']);
+
+// you can pass values into it, like for example a user might select a target property.
+// we don't know the property the user may select, that'll be chosen at runtime.
+// So, we might have a variable somewhere else like below:
+let selection = 'first_name';
+// we can access that property with bracket notation in a dynamic way like below
+person[selection] = 'Mary';
