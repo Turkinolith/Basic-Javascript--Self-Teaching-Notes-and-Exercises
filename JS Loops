@@ -1,0 +1,19 @@
+Loop Types:
+
+For
+While
+Do...while
+For...in
+For...of
+
+All do the same thing, repeat an action a number of times, but there is a subtle difference in how they start and end.
+
+For single statement loops-
+for (initial_expression IE: let i = 0; condition IE: i < 5; increment_expression i++) statement;
+*Like if's, a single line statement doesn't need to be in curls, more than one line does need to be.
+
+For multi statement loops-
+for (initial_expression IE: let i = 0; condition IE: i < 5; increment_expression i++) {
+  statement;
+  statement;
+}
