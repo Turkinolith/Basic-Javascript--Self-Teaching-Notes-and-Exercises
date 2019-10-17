@@ -31,3 +31,52 @@ while (condition IE: i < 5) {
 So, without this would constantly loop untill the condition is no longer true.
 This allows things like infinate loops (IE: while (true)).
 
+
+Do...while loops:
+Not used as often as a for or while loop.
+very similar to while loops, also need to have their loop variables declared externaly.
+Example:
+let i = 0;
+do {
+  if (i % 2 !==0)  console.log(i);
+  i++;
+} while (i <= 5);
+What is the difference? A do...while loop executes at least once, even if the condition evaluates false.
+The order of operations is the statement runs, THEN the condition is checked.
+
+
+The next loops are used to iterate over the properties of an object of elements in an array.
+
+For...in loops:
+Best for iterating through objects.
+Different from the earlier for loop in that it doesn't have 3 initial parts.
+Example:
+const person = {
+  name: 'Larry',
+  age: 38
+};
+for (let key in person)   //So in every iteration the key variable in the loop will hold the properties of the person object.
+  console.log(key);
+
+Remember, you can access values by using dot notation (person.name) or bracket notation (person['name'])
+Remember, bracket notation is used when you don't know ahead of time the name of the property we are accessing.
+Example:
+for (let key in person)
+  console.log(key, person[key]);
+  
+for...in loops are not the best at it, but can be used on an array.
+example:
+const colors = ['red', 'green', 'blue'];
+for (let index in colors)
+  console.log(index, colors[index]);  // expected return: 0 red, 1 green, 2 blue
+  
+In ES6 the better way to go through an array is a for...of loop.
+
+For...of loops:
+best for iterating through arrays.
+example:
+for (let color of colors)
+  console.log(color);
+With this type of loop you don't have to deal with the index and don't have to use bracket notation to access the values at the given index.
+So with each iteration (color), which is our loop variable, will hold the value of the index in the array.
+
