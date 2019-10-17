@@ -1,0 +1,15 @@
+// Function takes param thats the speed of a car.
+// assume speed limit = 70
+// if below speed limit => Ok
+// for every 5 over speed limit, get 1 point
+// use math.floor() as part of the calculation.
+// if 12 points or greater ->suspended
+
+console.log(checkSpeed(140));
+
+function checkSpeed(speed) {
+    let accumulator = Math.floor(speed) - 70;
+    if (speed <= 70) return console.log('Ok');
+    if ((accumulator / 5) >= 12) return 'Suspended';
+    return console.log((accumulator / 5)  + ' Points');
+}
