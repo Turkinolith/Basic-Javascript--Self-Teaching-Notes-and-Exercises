@@ -17,3 +17,17 @@ for (initial_expression IE: let i = 0; condition IE: i < 5; increment_expression
   statement;
   statement;
 }
+
+While loops:
+Key diff between while and for is that in for loops, the loop variable is part of the loop itself but in while loops it needs to be declared 
+outside of the scope of the loop.
+
+IE (this simulates the above for loop)
+let i = 0;
+while (condition IE: i < 5) {
+  statement;
+  i++;
+}
+So, without this would constantly loop untill the condition is no longer true.
+This allows things like infinate loops (IE: while (true)).
+
