@@ -5,6 +5,7 @@
 // use math.floor() as part of the calculation.
 // if 12 points or greater ->suspended
 
+// First Pass
 console.log(checkSpeed(140));
 
 function checkSpeed(speed) {
@@ -12,4 +13,18 @@ function checkSpeed(speed) {
     if (speed <= 70) return console.log('Ok');
     if ((accumulator / 5) >= 12) return 'Suspended';
     return console.log((accumulator / 5)  + ' Points');
+}
+
+// Don't use magic numbers in code as that doesn't tell you what they mean.
+// Always use constants to describe them!
+
+// refactor #1
+function checkSpeed(speed) {
+    const SpeedLimit = 70;
+    const PointMax = 12;
+    const PointTier = 5;
+    let accumulator = Math.floor(speed) - SpeedLimit;
+    if (speed <= SpeedLimit) return console.log('Ok');
+    if ((accumulator / PointTier) >= PointMax) return 'Suspended';
+    return console.log((accumulator / PointTier)  + ' Points');
 }
