@@ -1,0 +1,16 @@
+//First pass on a check if params are a landscape or portrait function
+
+function isLandscape(width, height) {
+    return Boolean(width > height);
+}
+
+console.log(isLandscape(300, 600));
+
+// works, but looks ameturish. Don't need to call out a bool function here as the statement (width > height)
+// already returns a bool value.
+
+function isLandscape_v2(width, height) {
+    return (width > height);
+}
+
+console.log(isLandscape_v2(800, 600));
