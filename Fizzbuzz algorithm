@@ -1,0 +1,20 @@
+// First pass on a popular interview question, the Fizzbuzz algorithm.
+
+// How it should work:
+//it takes an input and returns a string
+//Divisible by 3 => Fizz
+//Divisible by 5 => Buzz
+//Divisible by both 3 and 5 => FizzBuzz
+//Not divisible by either => input
+//Not a number => 'Not a number'
+
+function fizzBuzz(input) {
+    if (typeof(input) !== 'number') return 'Not a number';
+    if (!(input % 5) && !(input % 3)) return 'FizzBuzz';
+    else if (!(input % 5)) return 'Buzz';
+    else if (!(input % 3)) return 'Fizz';
+    else return input;
+}
+
+const result = fizzBuzz(15);
+console.log(result);
