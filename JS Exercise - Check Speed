@@ -22,9 +22,9 @@ function checkSpeed(speed) {
 function checkSpeed(speed) {
     const SpeedLimit = 70;
     const PointMax = 12;
-    const PointTier = 5;
+    const SpeedPerPoint = 5;
     let accumulator = Math.floor(speed) - SpeedLimit;
     if (speed <= SpeedLimit) return console.log('Ok');
-    if ((accumulator / PointTier) >= PointMax) return 'Suspended';
-    return console.log((accumulator / PointTier)  + ' Points');
+    if ((accumulator / SpeedPerPoint) >= PointMax) return 'Suspended';
+    return console.log((accumulator / SpeedPerPoint)  + ' Points');
 }
