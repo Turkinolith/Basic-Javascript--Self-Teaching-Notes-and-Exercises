@@ -28,3 +28,17 @@ function checkSpeed(speed) {
     if ((accumulator / SpeedPerPoint) >= PointMax) return 'Suspended';
     return console.log((accumulator / SpeedPerPoint)  + ' Points');
 }
+
+// refactor #2
+// this solves a problem where if you drive 71-74 you get a '0 Points' return.
+// in return, this allows you to drive up to 74 while getting an "Ok"
+
+function checkSpeed(speed) {
+    const SpeedLimit = 70;
+    const PointMax = 12;
+    const SpeedPerPoint = 5;
+    let accumulator = speed - SpeedLimit;
+    if (speed < SpeedLimit + SpeedPerPoint) return console.log('Ok');
+    if ((accumulator / SpeedPerPoint) >= PointMax) return 'Suspended';
+    return console.log(Math.floor((accumulator / SpeedPerPoint))  + ' Points');
+}
