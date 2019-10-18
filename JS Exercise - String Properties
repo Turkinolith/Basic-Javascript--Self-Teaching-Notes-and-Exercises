@@ -1,0 +1,21 @@
+// write a function that will only display the key/value pairs of an object
+// where the values are strings.
+
+const movie = {
+    title: 'a',
+    releaseYear: 2018,
+    rating: 4.5,
+    director: 'b'
+};
+
+function showProperties(var_object) {
+    Object.keys(var_object).forEach(key => {
+        let value = var_object[key];
+        if (typeof(value) == "string") {
+            //console.log(`${key}: ${value}`); //Either of these two console.log lines will work.
+            console.log(key, value);
+        }
+    });
+}
+
+showProperties(movie)
