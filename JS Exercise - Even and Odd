@@ -1,0 +1,16 @@
+//write a function that takes a number input.
+//output should be to show all numbers up to that number
+//each number should show if it is even or odd.
+// I did this exercise using recursion as I'm
+// doing those lessons over on Free Code Camp at the same time.
+
+showNumbers(15);
+
+function showNumbers(limit) {
+    if (limit <= 0) {
+        return;
+    } else {
+        console.log(limit, limit % 2 ? 'Odd' : 'Even')
+        return showNumbers(limit - 1);
+    }
+}
