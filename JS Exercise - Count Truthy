@@ -1,0 +1,9 @@
+//write a function that takes an array and counts all truthy elements within the array.
+const array1 = [0, null, undefined, '', 2, 3]
+
+function countTruthy(arr) {
+    let resultArray = arr.filter(x => x );
+    return resultArray.length
+}
+
+console.log(countTruthy(array1));
