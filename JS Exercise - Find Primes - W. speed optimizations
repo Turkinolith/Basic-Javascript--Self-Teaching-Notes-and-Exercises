@@ -1,0 +1,47 @@
+//create a function called showPrimes that takes a test_num and shows all prime numbers up to it.
+
+function showFactors(test_num) {
+    let factors = [];
+    for (let i = 1; i < test_num; i++) {
+        if (test_num % i == 0) factors.push(i);
+    }
+    return factors;
+}
+
+
+function showPrimes(limit) {
+    let factor_arr = [];
+    for (let i = 1; i < limit; i++) {
+        if (showFactors(i).length === 1) {
+            factor_arr.push(i);
+            console.log(i);
+        }
+    }
+    return factor_arr;
+}
+
+// Refactor with some cheating to speed things up
+// In my original function, I made a function to show all factors of a number before I filtered it for primes.
+// In my refactor below I start to search for factors, but as soon as the number of factors goes beyond my initial target I break
+// out of the loop so as to not waste any more power as that particular number is already in a "falsey" state.
+// I then run everything through a new "cheat primes" loop to filter out the 'falsey' results.
+
+function showCheatFactors(test_num) {
+    let factors = [];
+    for (let i = 1; i < test_num; i++) {
+        if (test_num % i == 0) factors.push(i);
+        if (factors.length > 1) break;
+    }
+    return factors;
+}
+
+function showCheatPrimes(limit) {
+    let factor_arr = [];
+    for (let i = 1; i < limit; i++) {
+        if (showCheatFactors(i).length === 1) {
+            factor_arr.push(i);
+            console.log(i);
+        }
+    }
+    return factor_arr;
+}
