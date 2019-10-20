@@ -1,0 +1,23 @@
+//create a function called showPrimes that takes a test_num and shows all prime numbers up to it.
+// First try! 
+
+function showFactors(test_num) {
+    let factors = [];
+    for (let i = 1; i < test_num; i++) {
+        if (test_num % i == 0) {
+            factors.push(i);
+        }
+    }
+    return factors;
+}
+
+function showPrimes(limit) {
+    let factor_arr = [];
+    for (let i = 1; i < limit; i++) {
+        if (showFactors(i).length === 1) {
+            factor_arr.push(i);
+            console.log(i);
+        }
+    }
+    return factor_arr;
+}
