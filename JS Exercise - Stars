@@ -1,0 +1,26 @@
+// create a function that will display asterisks in rows up to the number specified:
+// IE: showStars(3) 
+// '***'
+// '**'
+// '*'
+
+function showStars(rows) {
+    if (rows < 0) return '';
+    if (rows == 0) return '*';
+    else {
+        console.log('*'.repeat(rows));
+        //for (let i = 0; i <= rows; i++) {}
+        return '*' + showStars(rows - 1);
+    }
+}
+
+// instructor version
+
+function inst_showStars(rows) {
+    for (let row = 1; row <= rows; row++) {
+        let pattern = '';
+        for (let i = 0; i < row; i++)
+        pattern += '*';
+        console.log(pattern);
+    }
+}
