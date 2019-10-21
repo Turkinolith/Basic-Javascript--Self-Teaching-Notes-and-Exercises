@@ -1,0 +1,24 @@
+// **** EXERCISE: Address Object ****
+// create an address object with 3 properties:
+// street, city, zipCode.
+// then create a function called showAddress(address) that takes an address object and displays all properties along with value.
+
+// Object Builder
+function Address(street, city, zip) {
+    this.street = street;
+    this.city = city;
+    this.zip = zip;
+}
+
+// Function to Enumerate the Object
+function showAddress(address) {
+    for (let key in address) {
+        console.log(key, address[key]);
+    }
+};
+
+// Create the first Address Object
+const Bozeadd = new Address('1222 Temp Dr', 'Bozeman', 95718);
+
+// Enumerate the Address Object Properties.
+showAddress(Bozeadd);
