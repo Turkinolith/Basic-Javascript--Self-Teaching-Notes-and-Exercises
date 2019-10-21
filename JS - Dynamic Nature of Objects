@@ -1,0 +1,30 @@
+// Constructor Function
+// Noted in Pascal Notation by convention: IE every first letter is caps OneTwoThreeFour
+// uses "this" - "this" is a reference to the object that is executing the piece of code.
+// in the below case, this is referencing an "empty" object that is being created.
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function() {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(1);
+
+console.log(circle);
+// now that the circle object is created, lets modify it by adding properties and methods
+circle.color = 'yellow';
+circle.draw = function() {}
+
+console.log(circle);
+// As you can see, properties and methods are added.
+// we can remove them too:
+
+delete circle.color;
+delete circle.draw;
+
+console.log(circle);
+// Note that the circle object is a constant, but you add and removed properties and/or methods to it.
+// you can't reassign circle to anything else, you'll get a typeError if you do.
+// So, circle itself is a constant, but you can change the circle object by adding or removing properties.
