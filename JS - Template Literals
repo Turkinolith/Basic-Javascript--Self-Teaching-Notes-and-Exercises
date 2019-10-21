@@ -1,0 +1,58 @@
+// ********** TEMPLATE LITERALS ***********
+// in talking about strings we covered escape characters such as this:
+const message = 'this is my\n first message';
+console.log(message);
+// what isn't nice about this, is it doesn't let you visualize easily what the output will be.
+// kind of like 'Hello adventurer $b$b$b' in wow....
+// so, to make it look more like how the output would be we break the string into two parts and concatonate them, and add the second part on a new line. We can also put the first part on a new line:
+const messtwo = 
+'This is my\n' + 
+'first message';
+console.log(messtwo);
+// this looks kind of similar to what we have in the output, but we still have the \n. and to make the matter worse if we want to surround first with single quotes we need to escape them.
+// this is where template literals come into play.
+
+// different types of literals:
+// Object {}
+// Boolean true, false
+// String '', ""
+// Template `` These are denoted by the backtick character, above tilde.
+
+const another = 
+`This is my
+'first' message`;
+console.log(another);
+
+// Way easier to read, this is particularly useful if you want to send out email messages in an app.
+// ex:
+const mailMessage =
+`Hi John, 
+Thank you for joining my mailing list.
+
+Regards,
+Larry`;
+console.log(mailMessage);
+
+// Another benefit of template literals is we can add placeholders.
+// old way of doing it:
+const name = 'John';
+const oldMessage = 'Hi ' + name + ',\n';
+console.log(oldMessage);
+
+// New way with Template Literals, you use a dollar sign and curly braces. Inside the braces you add an expression. You can pass a variable or constant or anything
+const placeMessage =
+`Hi ${name}, 
+Thank you for joining my mailing list.
+
+Regards,
+Larry`;
+console.log(placeMessage);
+
+// here we pass some stuff other than just variables. Any expression, even calling a function, that returns a value.
+const testMessage =
+`Hi ${name} ${ 2 + 3 }, 
+Thank you for joining my mailing list.
+
+Regards,
+Larry`;
+console.log(testMessage);
