@@ -1,0 +1,15 @@
+// ***** BUILT-IN OBJECTS - DATE *****
+const now = new Date();
+const date1 = new Date('Jan 11 2018 09:00');
+const date2 = new Date(2018, 9, 21, 13, 07);
+
+console.log(now); // Mon Oct 21 2019 14:07:41 GMT-0600 (Mountain Daylight Time) **AT time of generation**
+console.log(date1); // Thu Jan 11 2018 09:00:00 GMT-0700 (Mountain Standard Time)
+console.log(date2); // Sun Oct 21 2018 13:07:00 GMT-0600 (Mountain Daylight Time)
+
+// all of these date objects have a bunch of get and set methods.
+console.log(now.getFullYear()) // 2019  *at time of generation
+console.log(now.toDateString()); // Mon Oct 21 2019
+
+console.log(now.toISOString()); // 2019-10-21T20:12:44.923Z 
+// ***Note, the ToISOString is a common format used in WebApps that talk to backend to transfer date/time from client to server.
