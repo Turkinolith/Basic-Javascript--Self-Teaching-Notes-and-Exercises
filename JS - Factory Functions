@@ -1,0 +1,81 @@
+
+// Factory Function - A function that produces objects.
+// Example:
+
+function createCircle() {
+    return {
+        radius: 1,
+        location: {
+            x: 1,
+            y: 1
+        },
+        isVisable: true,
+        draw: function() {
+            console.log('draw');
+        }
+    };
+}
+
+// Now, every time we call createCircle() we will get this object.
+// However, we've hardcoded some values into it and every time we create a circle it'll have
+// a radius of 1. What if we want the radius different each one? So we want to pass radius as a parameter.
+// Now, we have the parameter 'radius' that will be supplied when the function is called.
+
+function createCircle(radius) {
+    return {
+        radius: radius,
+        location: {
+            x: 1,
+            y: 1
+        },
+        isVisable: true,
+        draw: function() {
+            console.log('draw');
+        }
+    };
+}
+
+// Similarly, we can do this for other values too but we're going to remove the location and isVisable properties
+// in order to focus more on the core of the Factory Function.
+
+function createCircle(radius) {
+    return {
+        radius: radius,
+        draw: function() {
+            console.log('draw');
+        }
+    };
+}
+
+// We can make this code shorter, in modern javascript if both the key and the value are the same we can remove the value and 
+// simply add the key.
+
+function createCircle(radius) {
+    return {
+        radius,
+        draw: function() {
+            console.log('draw');
+        }
+    };
+}
+
+// similarly we can make the method smaller too instead of defining it as a key/value pair, we define it like this:
+// drop the function keyword
+
+function createCircle(radius) {
+    return {
+        radius,
+        draw() {
+            console.log('draw');
+        }
+    };
+}
+
+// so now lets create an object
+const circle1 = createCircle(1);
+console.log(circle1);
+// Now the logic of the object is set in only one place.
+// So, if there is a bug we can fix the code in the one location and it'll propagate out to all of them.
+
+const circle2 = createCircle(2);
+console.log(circle2);
