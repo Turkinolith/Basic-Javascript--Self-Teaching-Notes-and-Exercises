@@ -1,0 +1,23 @@
+// ***** Built-in JS Objects: MATH *****
+// see: https://developer.mozilla.org
+// Math is a built-in object that has properties and methods for mathematical constants and functions
+// It is not a constructor.
+
+// EX: a useful property is Math.PI 
+console.log(Math.PI); // returns "3.141592653589793"
+
+// If you need to use math in your applications, just come back to the page and see what methods you can use.
+
+//ex. Math.random(), using it like this returns a result between 0 and 1.
+console.log(Math.random());
+
+// if you want to make this to a given range just check the reference page and you'll see a seciton
+// titled "Getting a random number between two values" it shows an exaple that you'd need a function that looks like:
+function getRandomBetween(min, max) {return Math.random() * (max - min) + min;}
+console.log(getRandomBetween(5, 10))
+
+// Another useful method is Math.round();
+Math.round(1.9) // 2
+
+// Another is Math.max();  Give it an array of numbers and it'll return the largest in the list.
+console.log(Math.max(1,2,3,4,5,6));
