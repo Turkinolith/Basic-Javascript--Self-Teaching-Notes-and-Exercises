@@ -1,0 +1,77 @@
+// Javascript has 2 catagories of Types
+
+//  ************* VALUE ****************
+//  ****** ALSO CALLED PRIMATIVES ******
+// Number
+// String
+// Boolean
+// Symbol
+// undefined
+// Null
+
+
+// ************** REFERANCE ***************
+// Objects
+// Functions *Also an object
+// Array *Again, also an object
+
+
+let x = 10; // X is 10
+let y = x; // Y is 10
+
+x = 20; // X is 20
+
+// See how the values are completely independant of each other.
+// IE: y does not have a referance to x, Y just had the value of X at the time of declaration 
+// copied to it.
+
+// Now, let's see what happens when we use a referance type, an object, here.
+
+let a = { value: 10 }; // a.value = 10
+let b = a;             // b = a, IE: value = 10
+a.value = 20;          // a.value = 20
+console.log(b);        // value = 20, why is that?
+
+// When we use an object, the object is not stored within the variable. The object is stored
+// somewhere else in memory.
+// the location of that memory address is instead stored within the variable.
+// So, when we copy A into B, its the address (or the reference) that is copied.
+// in other words, both A and B are now pointing towards the memory location where the object
+// is contained. When we modify that object using either A or B, the changes are immediately
+// visable to the other variable.
+
+// ************** TAKE AWAYS ****************
+// *** PRIMITIVES ARE COPIED BY THEIR VALUE ***
+// *** OBJECTS ARE COPIED BY THEIR REFERENCE ***
+
+
+
+
+// Another example:
+function increase(number) {
+    number++;
+}
+let number = 10;
+
+increase(number);
+console.log(number); // observe, the logged value is 10
+// Why is that? because of scope: the number used in the function is a copy of the 
+// "number" within the function. The param is local within the function and is completely
+// independant to the one used outside of it. After the function is called the local "number"
+// is discarded since its not returned or stored anywhere.
+// So, when we log the "number" in the console, we're essentially dealing with the
+// "number" located in the outermost scope, the one set to 10.
+// Primitives are coped by their value, so thats why we're working with two completely independant
+// numbers.
+
+// lets change this to a referance type/ object.
+let obj = { value: 10};
+
+function increase(obj) {
+    obj.value++;
+}
+increase(obj);
+console.log(obj);
+// Now, you see 11, because when we call increase we're passing the reference so its pointing to
+// the same object. So we're not dealing with independant copies, we have 2 variables that are
+// pointing to the same object.
