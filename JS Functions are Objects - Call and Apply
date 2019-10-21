@@ -1,0 +1,56 @@
+// *********** FUNCTIONS ARE OBJECTS ************
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function() {
+        console.log('draw');
+    }
+}
+
+const another = new Circle(1);
+
+// Note that when viewing "Circle.constructor" we get the native Function constructor.
+// lets declare a new object
+
+// We add a comma to add another property.
+// But, to get a multi-line property we use backticks (above tilde)
+const Circle1 = new Function('radius', `    this.radius = radius;
+this.draw = function() {
+    console.log('draw');
+}
+`);
+
+//So, when we declare a function it is represented internally like this.
+
+const newcircle = new Circle1(1);
+console.log(newcircle);
+
+
+// ************ CALL **************
+
+// lets look at function methods
+
+Circle.call()
+// Note the tooltip when the paren is added the first param of the call method is "ThisArg"
+// Here, we need to add an empty object. then the "this" keyword will reference the empty object.
+// after that add the arguments explictly, IE:
+Circle.call({}, 1, 2, 3)
+// So the below expression:
+Circle.call({}, 1)
+// is exactly the same as:
+const another = new Circle(1);
+
+// when we use the "new" operator, it'll internally create an empty object and pass it as the first
+// argument to the "call" method. And this object will determine the context for "this".
+// if you don't use the "new" operator, the "this" keyword will by default point to the global
+// operator, which is "window".
+
+
+// ********** APPLY  ************
+// there is another method
+Circle.apply({}, 1);
+// it works like the .call method, but instead of passing expressions explicitly it 
+// passes them in an array.
+Circle.apply({}, [1, 2, 3]);
+// This is useful if you already have an array somewhere in your code and you want to pass it 
+// as the 2nd argument for the apply method.
