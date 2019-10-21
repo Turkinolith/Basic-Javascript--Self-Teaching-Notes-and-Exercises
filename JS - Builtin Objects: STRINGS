@@ -1,0 +1,33 @@
+// ***** Built-in JS Objects: STRINGS *****
+// In JS there are 2 types of strings.
+
+// String Primitive
+const message = 'This is a message';
+console.log(typeof(message)); //string
+
+
+// String Object
+const another = new String('hi');
+console.log(typeof(another));  //object
+
+// however, when we use the dot notation with a string primitive
+// JS behind the scenes wraps it with a string object. We don't see it, but we can work with it like a string object.
+
+// some examples of methods
+console.log(message.length);  // 17
+console.log(message[2]); // i
+console.log(message.includes('is')); // true
+console.log(message.includes('joe')); // false
+console.log(message.startsWith('T')); // true
+console.log(message.indexOf('message')); // 10, so this begins at index 10
+console.log(message.replace('is', 'was')); // *this one was a good example of a bug to watch for, output is: "Thwas is a message" because "is" in "this" matched first. Output is also a new string, does not modify original.
+
+
+// **** ESCAPE NOTATION ****
+// There are special characters, if you want to use them they must be used with escape notation.
+// See mozella string page for the full list, but here are examples:
+const quotations = 'This is my \'first\' message';
+console.log(quotations);
+
+const newlines = 'This is a \n new line';
+console.log(newlines);
