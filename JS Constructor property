@@ -1,0 +1,45 @@
+// Factory
+function createCircle(radius) {
+    return {
+        radius,
+        draw: function() {
+            console.log('draw');
+        }
+    };
+}
+const circle = createCircle(1);
+
+
+// Constructor Function
+// Noted in Pascal Notation by convention: IE every first letter is caps OneTwoThreeFour
+// uses "this" - "this" is a reference to the object that is executing the piece of code.
+// in the below case, this is referencing an "empty" object that is being created.
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function() {
+        console.log('draw');
+    }
+}
+
+const another = new Circle(1);
+
+
+// Every object in JS has a property called 'constructor' that is used to reference the function that created it.
+console.log(circle.constructor);
+// note that when viewing the constructor functions for circle.constructor that it displays "f Object() { [native code] }"
+// this is using a built in constructor function in JS.
+// when you define an object using the object literal syntax it uses this constructor function.
+
+let x = {};
+// when this syntax, object literal, is used JS translates it like this:
+// let x = new Object();
+
+// So, since the Circle object is created using the object literal syntax, it is created using the built-in Object constructor function.
+
+// There are a few others built in constructors:
+new String(); 
+// But often we use string literals instead. IE: '', "", ``
+// its cleaner and simpler than using the constructor.
+new Boolean(); // true, false
+new Number(); // 1, 2, 3 ...
