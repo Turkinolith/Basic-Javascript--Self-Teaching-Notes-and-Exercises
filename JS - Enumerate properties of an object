@@ -1,0 +1,48 @@
+// *********** Enumerating Properties of an Object **********
+
+const circle = {
+    radius: 1,
+    draw() {
+        console.log('draw');
+    }
+};
+
+// So we've already covered using "For...in" and "For...of" to iterate over the properties
+// in an object. Lets recap
+
+// **** FOR...IN *****
+
+for (let key in circle) // This lets us iterate over all the properties and methods of the object
+    console.log(key, circle[key]); //remember to use bracket notation to get values of properties
+
+// **** FOR...OF ****
+
+/*
+for (let key of circle)  // This will give an error "circle is not iterable"
+    console.log(key);    // For...of can only work with arrays and maps, object isn't iterable
+*/
+// However, we do have the method, Object.keys
+// this method returns an array, which IS iterable.
+for (let key of Object.keys(circle))
+    console.log(key);   // Returns "Radius" & "draw"
+
+// Earlier we learned that "Object" is a built in constructor function.
+// Whenever we create an object using the Object Literal syntax its a call to
+// that constructor function.
+// Also all functions are objects in JS so they have properties and methods that we can access
+// using dot notation
+
+// There is a similar method to Object.keys
+//for (let key of Object.entries(circle)) // instead of returning keys as a string array, it returns
+// each key/value pair as an array.
+
+for (let entry of Object.entries(circle))
+    console.log(entry);
+// first return is ["radius", 1] First entry being the key, 2nd is the value
+// second return is ["draw", f] First entry is the key, second is the value (in this case a function)
+// This is another way to get access to all the properties and methods of an object.
+
+// Sometimes you want to see if an object has access to a given property or method.
+// use the in operator.
+if ('radius' in circle) console.log('yes'); // 'yes'
+if ('color' in circle) console.log('yes'); // nothing
