@@ -1,0 +1,51 @@
+// ***** CLONING AN OBJECT *****
+// Using the techniques of enumerating the properties of an object we can copy them into another object.
+
+const circle = {
+    radius: 1,
+    draw() {
+        console.log('draw');
+    }
+};
+
+// lets copy the above into a new empty object called "another"
+
+const another = {};
+
+// Lets use a for...in loop to iterate over the properties of circle and copy them into another.
+
+for (let key in circle)
+    another[key] = circle[key]; // this code is the equivalent of: another['radius'] = circle['radius'];
+
+console.log('for...in', another);
+
+// This works, but this method is a bit old.
+// In modern JS we have better ways to do the same thing
+// one way is the Object.assign method.
+
+// **** OBJECT.ASSIGN ****
+const newcirc = Object.assign({},circle) // First arguement is the object to copy to, can be a new object. Second arguement is the source object. returns the object
+console.log('object assign', newcirc);
+// The empty object in arguement 0 doesn't have to be a new one, it can be an already existing object. it can also have one or more properties or methods
+// in addition to what is being coped.
+// example:
+const modcirc = Object.assign({
+    color: 'yellow'
+},circle)
+console.log('Object Assign with additions', modcirc);
+// Now, it has a copy of the circle object, but also has the color property as well.
+
+//Another, simpler and more elegant way to clone an object:
+
+// **** SPREAD OPERATOR **** 
+// aka- 3 dots
+
+const spreadcircle = { ...circle };
+// what's happening is it's taking all of the properties and methods in the circle object and placing them between the curly braces. 
+// simplest way to clone an object.
+console.log('Spread Circle', spreadcircle);
+
+// **** TAKE AWAYS ****
+// Object.assign copies properties and methods from one or more source objects into a target object.
+// Can use that to clone an object or combine multiple objects into a single object.
+// Spread operator is used to spread an object AKA: get all the properties and methods and put them into another object.
