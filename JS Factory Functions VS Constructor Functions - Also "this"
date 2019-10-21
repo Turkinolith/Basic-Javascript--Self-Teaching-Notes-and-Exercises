@@ -1,0 +1,40 @@
+
+// Factory Function
+// Their designated in Camel Notation: IE first word lower case, first letter of every word after uppercase. oneTwoThreeFour
+function createCircle(radius) {
+    return {
+        radius,
+        draw() {
+            console.log('draw');
+        }
+    };
+}
+
+const myCircle = createCircle(1);
+
+// Constructor Function
+// Noted in Pascal Notation by convention: IE every first letter is caps OneTwoThreeFour
+// uses "this" - "this" is a reference to the object that is executing the piece of code.
+// in the below case, this is referencing an "empty" object that is being created.
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function() {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(1);
+
+// so, what is happening here?
+// when we use the 'new' operator here 3 things are happening.
+// #1 - This new operator creates a new javascript object.
+// #2 - It sets "this" to point to the new object.
+// #3 - the 'new' operator will return the new object from the function. IE: "return this;", in this case the "Circle()" function.
+
+// So which approach should be used to create new objects?
+// Both are equally good for doing so, but the constructor function pattern is more familiar to those who have
+// more experiance in languages such as Java or C#.
+// If you don't have experiance with those, you might want to go with a factory function. 
+// There isn't much difference between the two however there are some strongly oppinionated people.
+// Just pick whichever you feel more comfortable with and stick to it.
