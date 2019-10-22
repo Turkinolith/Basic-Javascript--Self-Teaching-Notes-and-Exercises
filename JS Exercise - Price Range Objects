@@ -1,0 +1,40 @@
+/* Use a constructor function to create 3 Price Range objects, like those found on Yelp
+
+So, here is a barebones version of how I understood that instruction.
+I made a constructor to build the objects and defined an array so that each object is stored together.
+Since this is to function like a radio button toggle, I use the array to get all of the objects and set their status 
+to "false" before setting the chosen one to active.
+
+In my quick testing, seems to work out perfectly!
+
+Things that I'd also assume it needs would be:
+# A method to instruct web page elements of a type to hide themselves if they don't have the corresponding "priceRange" attribute.
+# The minPrice and maxPrice properties would be expected to tie into an "averagePrice" value that would be assigned to the web page elements.
+*/
+
+
+const priceObjectArr = [];
+
+function ConstructPriceObject(label, tooltip, minPrice, maxPrice) {
+    this.label = label;
+    this.toolTip = tooltip;
+    this.minPrice = minPrice;
+    this.maxPrice = maxPrice;
+    this.active = false;
+    priceObjectArr.push(this);
+    this.activate = function() {
+        for (let priceObject of priceObjectArr) priceObject.active = false;
+        this.active = true;
+        console.log(priceObjectArr);
+    }
+    this.deactivate = function() {
+        this.active = false;
+        console.log(priceObjectArr);
+    }
+}
+
+const inexpensive = new ConstructPriceObject('$', 'inexpensive', 0, 10);
+const moderate = new ConstructPriceObject('$$', 'moderate', 11, 20);
+const expensive = new ConstructPriceObject('$$$', 'expensive', 21, 50);
+
+console.log(priceObjectArr);
