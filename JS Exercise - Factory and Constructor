@@ -1,0 +1,43 @@
+// This exercise is essentialy the same as the previous one, just the instructor wants both a constructor and a factory function make the things.
+// Since I already did one, I just copyed the code and added in the new stuff.
+
+
+// **** EXERCISE: Address Object ****
+// create an address object with 3 properties:
+// street, city, zipCode.
+// then create a function called showAddress(address) that takes an address object and displays all properties along with value.
+
+
+// Object Builder w Constructor Function
+
+/* function Address(street, city, zip) {
+    this.street = street;
+    this.city = city;
+    this.zip = zip;
+} */
+
+// Factory Function version
+
+function address(street, city, zip) {
+    return {
+        street,
+        city,
+        zip
+    };
+}
+
+// Function to Enumerate the Object
+function showAddress(address) {
+    for (let key in address) {
+        console.log(key, address[key]);
+    }
+};
+
+// Create the first Address Object
+//const Bozeadd = new Address('1222 Temp Dr', 'Bozeman', 95718);
+
+// create the address object with Factory Function version
+const Bozeadd = address('1222 Temp Dr', 'Bozeman', 95718)
+
+// Enumerate the Address Object Properties.
+showAddress(Bozeadd);
