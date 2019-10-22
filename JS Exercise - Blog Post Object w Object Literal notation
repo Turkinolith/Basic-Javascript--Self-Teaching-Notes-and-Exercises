@@ -1,0 +1,25 @@
+// Make a blog post object using Object literal notation.
+// it should have the following properties:
+// title - string
+// body - string
+// author - string
+// views - int
+// comments - array of objects with properties (author, body)
+// isLive (true,false)
+
+let post = {
+    title: 'Title',
+    body: 'body text',
+    author: 'Larry',
+    views: 0,
+    comments: [{
+        comment_author: 'Lisa',
+        comment_body: 'Comment text'
+    }, 
+    {
+        comment_author: 'Marc',
+        comment_body: 'Marc Comment text'
+    }],
+    isLive: true
+};
+
