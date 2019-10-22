@@ -1,0 +1,54 @@
+// **** EXERCISE: Object Equality ****
+// make 2 functions
+
+// First one called: areEqual(address1, address2) 
+// should check if the address properties are equall. (note: not that their pointing towards
+// the same memory address, we care about the values.)
+
+// the other function: areSame(address1, address2) 
+// this should check if the addresses are pointing towards the exact same object.
+
+// Object Builder w Constructor Function
+
+function Address(street, city, zip) {
+    this.street = street;
+    this.city = city;
+    this.zip = zip;
+}
+
+
+// Function 1 -- Verbose
+function verbose_areEqual(address1, address2) {
+    for (let key in address1) {
+        if (key in address2) console.log(`Results are: ${key} ${(address1[key] == address2[key]) ? 'Matches!' : 'doesn\'t match.'}`);
+        else return 'Error, key does not exist in second address.';
+    }
+};
+
+// Function 1
+
+function areEqual(address1, address2) {
+    let trueCount = Object.keys(address1).length;
+    for (let key in address1) {
+        if (address1[key] == address2[key]) {
+            --trueCount;
+        }
+    }
+    if (trueCount == 0) return true;
+    else return false;
+};
+
+// Function 2
+function areSame(address1, address2) {
+    return address1 === address2;
+}
+
+// Create the Address Objects
+const address1 = new Address('1222 Temp Dr', 'Bozeman', 95718);
+const address2 = new Address('1222 Temp Dr', 'Lake Forest', 92630);
+const address3 = new Address('1222 Temp Dr', 'Bozeman', 95718);
+
+//instructor solution for Function 1, Hardcoded comparison.
+function inst_areEqual(address1, address2) {
+    return address1.street === address2.street && address1.city === address2.city && address1.zip === address2.zip;
+}
