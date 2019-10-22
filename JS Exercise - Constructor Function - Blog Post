@@ -4,8 +4,8 @@
 // body - string
 // author - string
 // views - int
-// comments - array of objects with properties (author, body)
-// isLive (true,false)
+// comments - array of objects with properties (author, body) *empty arr in this exercise.
+// isLive - bool
 
 const author = 'Larry';
 
