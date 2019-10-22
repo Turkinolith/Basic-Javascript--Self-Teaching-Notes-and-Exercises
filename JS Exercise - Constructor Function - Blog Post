@@ -9,7 +9,7 @@
 
 const author = 'Larry';
 
-function CreatePost(title, body) {
+function Post(title, body) {
     this.author = author;
     this.title = title;
     this.body = body;
@@ -21,12 +21,12 @@ function CreatePost(title, body) {
     }
 }
 
-const newpost = new CreatePost('First Post', 'This is my first post here');
+const newpost = new Post('First Post', 'This is my first post here');
 
 // ****** Data Verification and experiment stuff below ******
 
 console.log(newpost);
-const newpost2 = new CreatePost('Second Post', 'This is my Second post here');
+const newpost2 = new Post('Second Post', 'This is my Second post here');
 console.log(newpost2);
 newpost.publish();
 console.log('newpost #1', newpost.isLive);
