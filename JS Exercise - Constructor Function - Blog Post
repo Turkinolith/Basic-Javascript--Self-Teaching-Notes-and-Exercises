@@ -1,0 +1,33 @@
+// Use a constructor function to create a blog post object 
+// scenario: Imagine you are building a blogging engine, the user is drafting a post, but it is not published yet. what should the function look like?
+// title - string
+// body - string
+// author - string
+// views - int
+// comments - array of objects with properties (author, body)
+// isLive (true,false)
+
+const author = 'Larry';
+
+function CreatePost(title, body) {
+    this.author = author;
+    this.title = title;
+    this.body = body;
+    this.views = 0;
+    this.comments = [];
+    this.isLive = false;
+    this.publish = function() {
+        return this.isLive = true;
+    }
+}
+
+const newpost = new CreatePost('First Post', 'This is my first post here');
+
+// ****** Data Verification and experiment stuff below ******
+
+console.log(newpost);
+const newpost2 = new CreatePost('Second Post', 'This is my Second post here');
+console.log(newpost2);
+newpost.publish();
+console.log('newpost #1', newpost.isLive);
+console.log('Newpost #2', newpost2.isLive);
