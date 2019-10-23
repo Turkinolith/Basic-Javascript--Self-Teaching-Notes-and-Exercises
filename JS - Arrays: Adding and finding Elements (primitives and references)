@@ -1,0 +1,53 @@
+// ********** JAVASCRIPT - ARRAYS **********
+
+// ***** ADDING ELEMENTS *****
+const numbers = [3, 4];
+
+// Add to - The End
+numbers.push(5, 6);
+
+
+// Add to - The Beginning
+numbers.unshift(1, 2);
+
+
+// Add to - The Middle
+numbers.splice(2, 0, 'a', 'b');
+
+
+// ***** FINDING ELEMENTS *****
+// Finding elements depends if you are looking for Primatives or reference types.
+
+// -- Finding Primatives --
+numbers.indexOf()  // Returns the first match of the param within the array. Returns -1 if it fails to find.
+numbers.lastIndexOf() // Returns the last match of the param within the array. Returns -1 if it fails to find.
+
+// a simple function to see if a value exists within an array at all
+console.log(numbers.indexOf(5) !== -1) // Returns True if the search term exists as an element, returns false if it doesnt.
+// This search is a bit ugly, so there is an ES6 version that is cleaner:
+console.log(numbers.includes(5)) // simply returns true if the element exists in the array.
+
+// All of these methods have a second param that is optional called FromIndex?, which is the index to start the search at.
+console.log(numbers.indexOf(3)); // returns 4
+console.log(numbers.indexOf(3, 5)) // Returns -1, because value 3 is located at index 4. Had there been another value 3 at index 4 or greater it would be returned at its index.
+
+
+// -- Finding References --
+const courses = [
+    { id: 1, name: 'a'},
+    { id: 2, name: 'b'},
+];
+
+// the .includes() method will not work here.
+console.log(courses.includes({ id: 1, name: 'a' }))  // this will return false, because the two objects here are different as they are in two different locations in memory, so when checked for equallity 
+// their references are checked, which would be false in this case as they are not the same.
+
+// To get around this, use the .find() method.
+// this method takes a function and it runs the function on each element of the array, stopping when it reaches a true. If it doesn't reach a true, it returns undefined.
+courses.find(function(course){
+    return course.name === 'a';
+});
+console.log(course);
+
+// There is a similar method called .findIndex(), it works the same, but returns the index instead of the value. It returns -1 if there is no match.
+
