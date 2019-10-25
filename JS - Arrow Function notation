@@ -1,0 +1,56 @@
+// Arrow Function Notation
+
+//best used when used as a callback function or passing a function as an argument into a method.
+
+const course = courses.find(function(course) {
+    return course.name === 'a'
+});
+
+// Now with arrow notation.
+// if the function only has a single parameter you can get rid of the parentheses, if it doesn't have any parameters, you have to pass an empty parentheses.
+// if the function is a single line of code and returning a value, you can make things even shorter by getting rid of the return keyword and curly braces.
+const course = courses.find(course => course.name === 'a');
+// we read this expression as: course goesto course.name equals 'a'
+
+
+// Another Example with step by step on how to convert to arrow notation:
+let vals = [5, 4, 9, 2, 1];
+function isEven(num) {
+  return (num % 2 == 0)
+}
+filteredArray = vals.filter(isEven);
+console.log(filteredArray)
+
+//Now, lets shorten this to ES6 style.
+//We can shorten the function by changing the parameter "num" to something singular, like "x"
+function isEven(x) {
+  return (x % 2 == 0)
+}
+
+//Next, we can change this to an arrow syntax function. drop the "function" keyword and the name as we won't need it, and add the arrow.
+(x) => {
+  return (x % 2 == 0)
+}
+
+//Next, we can drop the paren around "x" as we don't need them anymore. We can also drop "Return" as it is assumed and also drop the curly brackets, replacing them with paren.
+x => (x % 2 == 0)
+
+//Now, the full ES6 version should read as:
+filteredArray = vals.filter(x => x % 2 == 0);
+
+//Other versions of the code are:
+// **** Filter for Odd Numbers:
+filteredArray = vals.filter(x => x % 2 == 1);  
+
+// **** Filter for (NOT) Odd Numbers:
+  filteredArray = vals.filter(x => !(x % 2 == 1));  
+
+// ****  If you had an array with "truthie" or "not-truthie" values like NaN or undefined you could filter those out like:
+  let vals = [5, 4, undefined, 2, 1]
+  filteredArray = vals.filter(x => x != undefined);  
+
+// **** You could even simplify this so that if something is defined, it's returned like so:
+filteredArray = vals.filter(x => x);    
+
+// **** Or, you could even just return an array with all of the undefined by using:
+filteredArray = vals.filter(x => !x);      
