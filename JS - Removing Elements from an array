@@ -1,0 +1,26 @@
+// ***** Removing Elements from an array *****
+
+const numbers = [1, 2, 3, 4];
+
+//to add:
+// End
+numbers.push()
+
+// Beginning
+numbers.unshift()
+
+// Middle
+numbers.splice()
+
+
+// to remove:
+// End
+// const last = numbers.pop(); // expected status of numbers: [1, 2, 3]
+
+
+// Beginning
+// const first = numbers.shift(); // expected status of numbers: [2, 3, 4]
+
+
+// Middle
+// numbers.splice(2, 1); // expected status of numbers: [1, 2, 4]
