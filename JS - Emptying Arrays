@@ -1,0 +1,33 @@
+// ***** Emptying an array *****
+// how to remove all of the elements in an array
+
+let numbers = [1, 2, 3, 4];
+let another = numbers;
+
+// Solution 1
+// simply reassign the array.
+// If  it's assigned with "const" you can't do this, you'd have to use "let" when assigning it originally
+
+// numbers = [];
+
+// Advantages: Quickest
+// Disadvantages: if it is referenced by anything else, it won't work.
+// if there are no other references to the array then the data is hanging out in memory untill the garbage collectior is ran and removes it.
+// so if there is another variable like above:
+// then there is still a reference to the data and it will not be garbage collected.
+
+// Solution 2 
+// *** The most suggested method ***
+// set the length property to zero, this truncates the array and removes all elements.
+// numbers.length = 0;
+
+// Solution 3
+// Use the splice method. Below starts at the first element and removes elements up to the max of the array.
+// numbers.splice(0, numbers.length);
+
+// Solution 4
+// Use the pop method
+while (numbers.length > 0)
+    numbers.pop();
+// ** Not a suggested method as it has a large performance cost. ** 
+
