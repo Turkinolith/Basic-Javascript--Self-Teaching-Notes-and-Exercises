@@ -1,0 +1,85 @@
+// **** Mapping an Array ****
+// *** MAP METHOD ***
+const numbers = [1, -2, 3, 4, 5];
+
+const filtered = numbers.filter(number => number >= 0);
+// lets say we want to construct some HTML markup from the elements in this array
+const items = filtered.map(number => '<li>'  + number + '</li>');
+console.log(items);
+// Result is ["<li>1</li>", "<li>3</li>", "<li>4</li>", "<li>5</li>"]
+// now we can use the join method to join the elements and create a string.
+const html = items.join();
+console.log(html); // note comma is used as the seperator by default. We don't want that in our html markup, just combine them using an empty character
+const html2 = items.join('');
+console.log(html2);
+// now, the only bit that is remaining is the <UL> element.
+// a very simple implimentation would be like this:
+const html3 = '<ul>' + items.join('') + '</ul>';
+console.log(html3);
+// output is <ul><li>1</li><li>3</li><li>4</li><li>5</li></ul>
+
+// The take away is you can use the map method to map each element in an array to something else. in this case its mapping them into a string but you can also map them to objects.
+
+let objItems = filtered.map(number => {
+    const obj = { value: number };
+    return obj;
+});
+console.log('objItems :', objItems); 
+// Outpout is [{value: 1}, {value: 3}, {value: 4}, {value: 5}]
+
+// *** something tricky to note: in the callback function we declare obj as a constant and return it, technicly we don't need to declare that as a constant.
+// We can just put the return keyword on line 24 as we're not working with the constant. like below:
+let objItems2 = filtered.map(number => {
+    return { value: number };
+});
+console.log('objItems2 :', objItems2);
+
+// Now, remember since we're working with a single statement in the callback function, we can omit the return keyword and the curly braces.
+let objItems3 = filtered.map(number => { value: number });
+console.log('objItems3 :', objItems3);
+
+// but now we don't get the same result, we get an array with 4 entries of "undefined" elements.
+// This is because by default in an arrow function the curly braces represent a code block. So when the JS engine tries to parse the code it thinks 
+// we're defining a code block instead of an object to return. So if returning an object it needs to be put in Parenthesis.
+
+let objItems4 = filtered.map(number => ({ value: number }));
+console.log('objItems4 :', objItems4);
+
+// *** CHAINING ***
+// Map method returns a new array, it does not modify the original.
+// map is chainable, you can chain one map into another in a chain.
+// Example: the numbers.filter on line 5 is only used in the one place we havn't used it anywhere else. So we don't have to explicitly store its value. So, we can get rid of it.
+// IE:
+// numbers.filter(number => number >= 0).map(number => ({ value: number }));
+// This runs the filter method and immediately calling the map method upon the filters result.
+// This is called, "Chaining"
+console.log(numbers.filter(number => number >= 0).map(number => ({ value: number })));
+
+// By convention we put each method call on a seperate line, this makes the code cleaner.
+// IE: 
+const numItems = numbers
+    .filter(number => number >= 0)
+    .map(number => ({ value: number }))
+
+console.log(numItems);
+
+// note, because the map function returns an array, we can call filter on it again.
+// lets say we want to filter the map so that it only has objects with a value greater than 1.
+
+const numItems2 = numbers
+    .filter(number => number >= 0)
+    .map(number => ({ value: number }))
+    .filter(obj => obj.value > 1);
+
+console.log(numItems2);
+// Result [{value: 3}, {value: 4}, {value: 5}]
+
+// and now we can map the 2nd filter again and lets say map each object to a number. So, we read the value property and return it.
+const numItems3 = numbers
+    .filter(number => number >= 0)
+    .map(number => ({ value: number }))
+    .filter(obj => obj.value > 1)
+    .map(obj => obj.value);
+
+console.log(numItems3);
+// result [3, 4, 5]
