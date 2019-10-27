@@ -1,0 +1,34 @@
+// **** Testing Elements of arrays ****
+
+const numbers = [1, 2, 3, 4, 5];
+// There are 2 methods in modern JS that are useful: Every and Some
+// let's imagine we want to check if all of the elements in the numbers array are positive.
+// note the tooltip of the every method, it uses a function with up to 3 arguements, value which is a number, index which is a number, and finally the array itself. all optional.
+// This returns a bool, in this case true
+
+
+// *** EVERY METHOD ***
+let allPositive = numbers.every(function(value) {
+    return value >= 0;
+});
+// This method is ran on all elements of the array. As soon as it finds an element that fails its test, it will stop searching.
+
+console.log(allPositive);
+
+// lets insert a negative value to show this.
+numbers.unshift(-5);
+console.log(numbers);
+// And re-run the test and overwrite the allPositive value:
+allPositive = numbers.every(function(value) {
+    return value >= 0;
+});
+console.log(allPositive);
+// Now it returns false.
+// Note that as soon as the every function hits the false number, it won't check any further elements. 
+
+// *** SOME METHOD ***
+// There is a similar method called 'some' that checks to see if at least one value meets its check function.
+let atLeastOnePositive = numbers.some(function(value) {
+    return value >= 0;
+});
+console.log('some check is: ', atLeastOnePositive);
