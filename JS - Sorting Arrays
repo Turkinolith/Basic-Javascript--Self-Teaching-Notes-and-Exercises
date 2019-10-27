@@ -1,0 +1,57 @@
+// **** Sorting arrays ****
+const numbers = [2, 3, 1];
+numbers.sort();
+console.log(numbers);
+
+// A common companion to the sort method is the reverse method. It reverses the order of elements in the array.
+numbers.reverse();
+console.log(numbers);
+
+// These are easy to use on strings and numbers
+// when using objects it doesn't work, you need to do extra work.
+
+let courses = [
+    {id: 1, name: 'Node.js'},
+    {id: 2, name: 'JavaScript'},
+];
+// lets say we want to sort by name of courses.
+courses.sort();
+console.log(courses);
+// As you see, nothing has happened. How to fix this problem?
+// Sort method optionally takes a method that is used for comparison.
+courses.sort(function (a, b) {
+    // a < b => -1
+    // a > b => 1
+    // a === b => 0
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1; // note this doesn't use "else if", if the prior if is true, we're going to jump out of the function so it'd never reach this point. else just adds extra noise to the code.
+    return 0;
+});
+console.log(courses);
+
+// Now, if I change the J in Javascript to be lowercase, what would happen?
+let course2 = [
+    {id: 1, name: 'Node.js'},
+    {id: 2, name: 'javaScript'},
+];
+course2.sort(function (a, b) {
+
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1; 
+    return 0;
+});
+console.log(course2);
+// It's no longer sorted correctly. this is because internally all characters are numbered in ASCII, and the numeric value for capital J is different than lower and happens to be
+// lower than uppercase N.  Lowercase J is 106, Uppercase N is 78
+// To solve this problem, we should exclude case sensitivity when comparing these names.
+// So we can declare two constants 
+
+course2.sort(function (a, b) {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1; 
+    return 0;
+});
+// Trick: to multi-select entries, like to replace both name.a's select one and ctrl+D on windows to multi-line select, paste in, then enter or esc to deselect.
+console.log(course2); // Now you can see that it sorted properly.
