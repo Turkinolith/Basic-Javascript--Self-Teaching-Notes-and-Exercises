@@ -1,0 +1,15 @@
+// **** Joining arrays ****
+const numbers = [1, 2, 3];
+// numbers.join() // Note the tooltip for the join method, it has a question mark after "separator?" this means that param is optional. and the type is a string.
+// so, we can optionaly pass a string and that string will be used as a separator.
+// Returns a string
+const joined = numbers.join('-');
+console.log(joined);
+console.log(typeof(joined)); // string
+
+const message = 'This is my first message';
+const parts = message.split(' ');
+console.log(parts);
+
+const combined = parts.join('-')
+console.log(combined);
