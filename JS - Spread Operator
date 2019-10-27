@@ -1,0 +1,25 @@
+// **** The Spread Operator ****
+// achives the same thing as using the concat method.
+
+const first = [1, 2, 3];
+const second = [4, 5, 6];
+
+//const combined = first.concat(second);
+
+let combined = [...first, ...second];
+// When you spread an array, all its elements are returned individualy, basicly here we're declaring a new array.
+// and we're adding the elements of the first and the second array.
+// So the code above is exactly like: [1, 2, 3, 4, 5, 6]
+// so this is a cleaner way of presenting the code. first we have all the elements of the first array and now all the elements of the second.
+// using the spread operatior we have more flexability with how to combine arrays.
+// lets say we want to add something between them, we can easily do so like this:
+let combined = [...first, 'a', ...second]
+// similarly we can add stuff at the end.
+let combined = [...first, 'a', ...second, 'b']
+// we can clearly see what the array will look like
+// doing the same with the concat method will be more complex.
+
+// I also clearned that using the slice method with no arguments will copy the contents of an array.
+let copy = combined.slice();
+// So we can rewrite this like so:
+let copy = [...combined]
