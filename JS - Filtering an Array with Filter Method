@@ -1,0 +1,25 @@
+// **** Filtering an Array ****
+// *** FILTER METHOD ***
+const numbers = [1, -2, 3, 4, 5];
+// Let's say we want to return only the positive numbers.
+// again, like some, this uses a callback function that is testing each element of the array.
+// This time, it will return a new array that is composed of the values that pass the function check.
+let filtered = numbers.filter(function (value) {
+    return value >= 0;
+});
+
+console.log(filtered);
+
+// The filter method can be made simpler by also doing this as an arrow function
+filtered = numbers.filter(value => value >= 0);
+// this can be further shortened by changing the parameters of the function, since it is obvious we're working with the values of the numbers array.
+// so, we chan change it to something like 'v' for value, or 'n' for number.
+// not required, whichever makes the most sense.
+filtered = numbers.filter(n => n >= 0);
+
+// in the real world, we'd likely be working an array of objects.
+// EX: on the yelp website, you can click the 'Open Now' button to filter buisnesses that are open now. This is one kind of filtering
+// so if you want to build something like this, instead of an array of numbers you'd have an array of resteraunts, each would have opening hours, then you can
+// filter by their opening hours and return that.
+// ** This could be used to improve the filtering of my older JS exercise "Price Range"
+// https://github.com/Turkinolith/Javascript----Self-Teaching-Notes-and-Exercises/commit/e5da47d9bb0d1edae462582f524433f924c2dd00
