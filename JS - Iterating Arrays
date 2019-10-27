@@ -1,0 +1,11 @@
+// **** Iterating an array ****
+const numbers = [1, 2, 3];
+for (const number of numbers) {
+    console.log(number);
+}
+
+numbers.forEach(number => console.log(number));
+// arrow functions can take a 2nd param, index, just wrap it in paren. also when logging each element we can then display its index
+numbers.forEach((number, index) => console.log(index, number));
+
+// you don't get indexes in a "for of" loop but you can in "for in"
