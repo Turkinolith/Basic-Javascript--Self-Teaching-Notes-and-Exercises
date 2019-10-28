@@ -1,0 +1,48 @@
+// **** Reducing an Array Using the Reduce Method ****
+// lets say the numbers array represent the price of the items in a shopping cart
+const numbers = [1, -1, 2, 3];
+// simple algorithm for calc the sum of all numbers
+let sum = 0;
+for (let n of numbers) 
+    sum += n;
+console.log(sum);
+
+//cleaner way to write the same code using the reduce method on the array
+// Takes a callback function with 2 param: accumulator & currentValue
+// The accumulator param is exactly like the "let sum = 0, sum+= n" portions above. its something we initialize and the current value is added to it.
+// need to initialize the accumulator to zero, so as the second argument we put zero after the callback function at the very bottom. (it can start at whatever you want it to.)
+numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+}, 0);
+
+// Now, just store the output in something
+let sumValue = numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+}, 0);
+
+console.log('sumvalue is:', sumValue);
+
+// let's step through the function:
+// Round 1-
+//  accumulator = 0, currentValue = 1 |  0 + 1 = 1
+// Round 2-
+//  accumulator = 1, currentValue = -1 | -1 + 1 = 0
+// Round 3-
+//  accumulator = 0, currentValue = 2 | 0 + 2 = 2
+// Round 4-
+//  accumulator = 2, currentValue = 3 | 2 + 3 = 5
+//      Return 5
+
+// The code can be made even shorter!
+// If you remove the initialization arguement the accumulator will be set to the first element in the array.
+ sumValue = numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+});
+// in this case accumulator = 1 and currentvalue will set to the second element.
+// this is exactly like Round 2 above: accumulator = 1, currentValue = -1
+// It will then step forward exactly like above.
+// So with an initial value it will have an additional step.
+
+// Finally to make things shorter, we can remove the return keyword since we have a single statement and we're returning a single value.
+let shortValue = numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log('shortValue is:', shortValue);
