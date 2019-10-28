@@ -1,0 +1,23 @@
+// **** ARRAY EXERCISE - Array from Range ****
+// write a function called Array from Range
+// two param, min and max
+// this function should take any numbers, negative or positive, and generate an array with elements composed of the numbers between min and max.
+
+function arrayFromRange(min, max) {
+    if (min === max) return [max];
+    else {
+      let numbers = arrayFromRange(min + 1, max);
+      numbers.unshift(min);
+      return numbers;
+    }
+  };
+
+// Tests
+const test1 = arrayFromRange(-10, -4);
+const test2 = arrayFromRange(0, 5);
+const test3 = arrayFromRange(2, 2);
+console.log(test1);
+console.log(test1.constructor);
+console.log(test2);
+console.log(test3);
+console.log(test3.constructor);
