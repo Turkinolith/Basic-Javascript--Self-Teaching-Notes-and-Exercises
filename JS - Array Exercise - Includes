@@ -1,0 +1,15 @@
+// **** ARRAY EXERCISE - Includes ****
+// pretending the includes method didn't exist, write a function that works like it.
+// it should take 2 parameters, an array, and a search element.
+// if the search element is within the array, it should return true. Else False
+
+const numbers = [1, 2, 3, 4];
+
+function includes( arr, searchElement) {
+    for (const key of arr) {
+        if (searchElement === key) return true;
+    }
+    return false;
+}
+
+console.log(includes(numbers, 2))
