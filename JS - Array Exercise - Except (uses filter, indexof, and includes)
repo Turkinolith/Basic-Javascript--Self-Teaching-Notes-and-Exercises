@@ -1,0 +1,82 @@
+// **** ARRAY EXERCISE - Except ****
+// write a function called except that takes two arrays. the first param is the source Array
+// this function returns a new array without the values passed in the 2nd param.
+
+const numbers = [1, 2, 3, 4, 1, 1];
+
+const output = except(numbers, [1, 3]);
+
+console.log(output); // Expected output [2, 4]
+
+
+// Since I had just finished covering ES6 methods like map and filter I assumed this is what the instructor would want me to use: 
+
+// Initial attempt, worked for first param, but not for the second
+/*
+function except(arr, excluded) {
+    return arr.filter(function (value) {
+        for (const key of excluded) {
+            console.log('key is:' + key + ' and value is: ' + value + 'it is: ' + (key === value ? 'true' : 'false'));
+            if (key === value) return false;
+            //return true;
+        }
+    });
+}
+*/
+
+// Second attempt, this one worked all throughout!
+
+function except(arr, excluded) {
+    return arr.filter((value) => {
+        //console.log(excluded.indexOf(value) === -1);  //This is for testing
+        return excluded.indexOf(value) === -1;
+    });
+}
+
+// Lets go through the function:
+
+// The filter method is ran on every element of param "arr" which is temp saved as "value"
+// Value is passed into an .indexOf method of the excluded array. This would normally return the index of the result or a negative 1 if it is not found.
+// In this case, to make it a True/False statement we compare to negative 1. 
+
+// Loop #1 - filter passes index #0 of numbers into the function -  value = 1
+//          Next it does the indexOf function - excluded = [1, 3],   so the function is [1, 3].indexOf(1)
+//          Since 1 is index 0 of [1,3], it returns 0, 0 is not === -1 so it returns false, which is passed into the filter function for value 1, which returns index 0 as false.
+
+// Loop #2 - filter passes index #1 of numbers into the function -  value = 2
+//          indexOf is ran again - [1,3].indexOf(2)
+//          2 is not an index of [1,3] so it returns -1, as -1 === -1 that returns true, which is passed into the filter function for value 2, which returns index 1 as true.
+
+// Loop #3 - filter passes index #2 into the function - value = 3
+//          indexOf is ran again - [1,3].indexOf(3)
+//          since 3 is an index in [1,3] it returns the index, 1.  1 is not === -1 so it returns false which is passed into the filter function for value 3, which returnd index 2 as false.
+
+// Loop #4 - Filter passes index #3 into the function - value = 4
+//          IndexOf is ran again - [1,3].indexOf(4)
+//          4 is not an index of [1,3] so it returns -1 which === -1, it returns true which is passed into the filter function for value 4, which returns index #3 as true.
+
+// Loop #5 - Filter passes index #4 into the function - value = 1
+//          indexOf is ran again - [1,3].indexOf(1)
+//          Since 1 is index 0 of [1,3], it returns 0, 0 is not === -1 so it returns false, which is passed into the filter function for value 1, which returns index 4 as false.
+
+// Loop #6 - Filter passes index #5 into the function - value = 1
+//          indexOf is ran again - [1,3].indexOf(1)
+//          Since 1 is index 0 of [1,3], it returns 0, 0 is not === -1 so it returns false, which is passed into the filter function for value 1, which returns index 5 as false.
+
+// At this point the numbers array is mapped out into this psudo array where each index is [false, true, false, true, false, false]
+// The filter finishes up and now returns the true values [2,4]
+
+
+// The instructor did this differently, but to the same result.
+// Note: he did NOT use ES6 methods, much to my frustration at misreading him. on the other hand I think this is a bit more straightforward to understand.
+
+function instructorExcept(array, excluded) {
+    const output = [];
+    for (let element of array)
+        if (!excluded.includes(element))
+            output.push(element);
+    return output;
+}
+
+const instructorOutput = instructorExcept(numbers, [1, 3]);
+console.log(instructorOutput);
