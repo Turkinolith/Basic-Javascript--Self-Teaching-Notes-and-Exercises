@@ -1,0 +1,36 @@
+// **** ARRAY EXERCISE - Count Occurrences ****
+// write a function called countOccurrences, it takes two parameters, an array and a search element and returns the amount of times the search element occurs in the array.
+
+const numbers = [1, 2, 3, 4, 2, 3, 2];
+
+const count = countOccurrences(numbers, 3);
+console.log(count);
+
+//First Pass, works!
+function countOccurrences(array, searchElement) {
+    let accumulator = 0;
+    array.forEach(element => {
+        if (element === searchElement) ++accumulator;
+    });
+    return accumulator;
+}
+
+// Challenge: Use the reduce method to do the same thing
+function reduceOccurrences(arr, search) {
+    return arr.reduce((accumulator, currentvalue) => { return (search === currentvalue) ? ++accumulator : accumulator += 0;}, 0);
+}
+
+// ran into two big problems with the challenge result.
+// #1, had issues with properly setting the accumulator value, initially I tried using a set of "if" statements but that was causing problems and making the 
+// code really noisy. using a tenerary operator here really helps.
+
+// #2, I had completely spaced out in dealing with #1 and forgot to return the result of the reduce. So after banging my head for an hour I finally realized what I was missing.
+
+
+// instructor version:
+function instructorOccurances(array, searchElement) {
+    return array.reduce((accumulator, currrent) => {
+        const occurrence = (current === searchElement) ? 1 : 0;
+        return accumulator + occurrence;
+    }, 0);
+}
