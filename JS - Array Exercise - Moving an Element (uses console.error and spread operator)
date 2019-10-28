@@ -1,0 +1,47 @@
+// **** ARRAY EXERCISE - Moving an Element ****
+// write a function called move, it should take 3 paramters: array, index, offset
+// the function should take the value of index, and move it within the array to the right by the offset value.
+// if the offset would move the value to an index beyond the length of the array, it hsould display an error "invalid offset"
+// to display the error it will need another method called console.error(), pass a string and that will appear as the error.
+// the offset can be a negative number and it should move to the left
+// if the negative offset would move the number beyond the 0 index of the array, it should also pass the 'invalid offset' error.
+// The original array must remain unaffected by this modification.
+
+const numbers = [1, 2, 3, 4];
+
+// First attempt, works completely!
+/*
+function move(array, index, offset) {
+    if (array.length <= index + offset) return console.error('invalid offset');
+    if (0 > index + offset) return console.error('invalid offset');
+    let tempArr = array.slice();
+    let tempElement = tempArr.splice(index, 1);
+    tempArr.splice(index + offset, 0, tempElement[0]);
+    return tempArr;
+}
+*/
+
+// instructor version:
+/*
+function move(array, index, offset) {
+    const position = index + offset;
+    if (position >= array.length || positino < 0) {
+        console.error('Invalid Offset.');
+        return;
+    }
+
+    const output = [...array];
+    const element = output.splice(index, 1) [0];
+    output.splice(position, 0, element);
+    return output;
+}
+*/
+
+// Reafactored version of first attempt using some simplification from the instructor version
+function move(array, index, offset) {
+    if (array.length <= index + offset || 0 > index + offset) return console.error('invalid offset');
+    let tempArr = [...array];
+    let tempElement = tempArr.splice(index, 1);
+    tempArr.splice(index + offset, 0, tempElement[0]);
+    return tempArr;
+}
