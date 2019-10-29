@@ -1,0 +1,63 @@
+// **** Arguments ****
+// JS is a dynamic language. you can change the types of data stored within a variable.
+// We have the same concept in the arguements of a function.
+
+function sum(a, b) {
+    return a + b;
+}
+
+//console.log(sum(1, 2));
+
+// in js, it doesn't matter that the function has 2 parameters, we can pass only one arguement.
+
+// console.log(sum(1)); // Generates "NaN", because a = 1, b = undefined
+// console.log(sum());  // Same thing happens here, it's not a valid arithmatic operation.
+
+console.log(sum(1, 2, 3, 4, 5));  // returns '3', By the same token, you can pass a ton of arguments, its still valid JS code. but the function only takes the first 2. 
+
+
+
+// But what if you want to have a varying amount of parameters? you want the flexability to pass as many as you want?
+// Every function in JS has a special object called 'arguments'
+
+function sum2(a, b) {
+    console.log(arguments);
+    return a + b;
+}
+sum2(1, 2, 3, 4)
+// Arguments(4) [1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+// Returns an arguements object, it looks kind of like an array. but its an object
+// the keys we have are the indexes of the arguments passed to the function.
+// has a length property
+// has a property called 'callee' which returns the currently executing function
+
+// Lets say we want to change the function so it will return the sum of all of its arguments.
+// here is a very simple way:
+
+// Remember that For...of loops work best on arrays, but technicly you can use them on anything that has an iterator.
+// The plain objects we create with the object literal syntax don't have an interator, but
+// in the case of this function, it has one as noted in the arguements console.log: "Symbol(Symbol.iterator)"
+// So we can use a for...of to iterate it.
+function sum3(a, b) {
+    let total = 0;
+    for (const value of arguments) {
+        total += value;
+    }
+    return total;
+}
+console.log(sum3(1, 2, 3, 4, 5));  // returns 15, and now can add as many parameters as we want.
+
+
+
+// another cool thing, is now we can remove the parameters fron the function decleration because technicly we're working with the arguments object now and not referencing
+// the 'a' or 'b' anywhere inside it.
+
+function sum4() {
+    let total = 0;
+    for (const value of arguments) {
+        total += value;
+    }
+    return total;
+}
+console.log(sum4(1, 2, 3, 4, 5, 6, 7)); 
