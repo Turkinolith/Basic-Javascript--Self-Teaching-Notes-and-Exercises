@@ -1,0 +1,56 @@
+// **** Functions - Default Parameters ****
+
+// there are times you want to put default paramters in a function.
+/* 
+function interest(principal, rate, years) {
+    return principal * rate / 100 * years;
+}
+
+console.log(interest(10000, 3.5, 5));
+*/
+// Returns 1750
+
+
+// what if we want default values for the interest rate and years?
+// earlier in the secton on operators we saw this technique:
+//  rate = rate || 3.5;
+// So if rate has a value (it's 'truthy') we're going to use that, else 3.5.
+// similarly
+// years = years || 5;
+// then, if we exclude those arguments, those default values will still be used for the algorithm.
+// let's rewrite the function to show this:
+/* 
+function interest(principal, rate, years) {
+    rate = rate || 3.5;
+    years = years || 5;
+    return principal * rate / 100 * years;
+}
+
+console.log(interest(10000));
+ */
+// Still get the same return as above, 1750
+
+// In ES6 there is a cleaner way to do the same thing.
+// Instead of having logical expressions, we can set the default values in the declared parameters.
+
+function interest(principal, rate = 3.5, years = 5) {
+    return principal * rate / 100 * years;
+}
+
+console.log(interest(10000));
+// Still get the same result: 1750
+
+// ***************************
+// ***** IMPORTANT!!! ********
+// ***************************
+// Once you give a parameter a default value, all parameters after it need a default value too.
+
+function brokenInterest(principal, rate = 3.5, years) {
+    return principal * rate / 100 * years;
+}
+console.log(brokenInterest(10000));
+// Returns: NaN
+// because we pass the value of principal, rate has a default value, but years isn't set so it is undefined. 
+// if we tried to put in another paramter the Javascript engine doesn't know if that would be used for "rate" or years.
+// you can trick it by doing the following: brokenInterest(10000, undefined, 5); and the passing of undefined into rate will be a "falsy" value causing it to use the default, but that gets messy.
+// Its way better and more understandable to just give either the last paramter a default value, or every paramter that follows the desired one default values.
