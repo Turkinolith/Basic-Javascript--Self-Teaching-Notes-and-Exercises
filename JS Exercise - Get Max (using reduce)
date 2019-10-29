@@ -1,0 +1,24 @@
+// **** ARRAY EXERCISE - Get Max ****
+// write a function called getMax it takes an array and it returns the largest number in the array.
+
+const numbers = [1, 2, 3, 4, 22, 37, 2];
+
+// First implementation, simple
+function getMax(array) {
+    if (array.length === 0) return undefined;
+    let number = 0;
+    for (let value of array) {
+        if (value > number) number = value;
+    }
+    return number;
+}
+
+// challenge using reduce
+function getReducedMax(array) {if (array.length === 0) return undefined; return array.reduce((accumulator, currentvalue) => (accumulator < currentvalue) ? accumulator = currentvalue : accumulator, 0);}
+
+// breaking this down now for readability
+
+function getReducedMax(array) {
+    if (array.length === 0) return undefined; 
+    return array.reduce((accumulator, currentvalue) => 
+    (accumulator < currentvalue) ? accumulator = currentvalue : accumulator, 0);}
