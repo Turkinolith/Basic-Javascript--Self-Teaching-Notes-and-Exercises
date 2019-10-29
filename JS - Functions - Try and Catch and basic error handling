@@ -1,0 +1,133 @@
+// **** Functions - Try and Catch ****
+
+// in the last lesson we assumed that the value we obtained for "fullName" was a valid string.
+// We need to add error handling to handle issues where people put in invalid data types.
+// Typicly in situations like this error handling should be done at the beginning of a function or method, this is called defensive programing.
+// make sure values coming in are valid and the right shape in order to handle them.
+/*
+const personSetName = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    get fullName() {                        
+        return `${personSetName.firstName} ${personSetName.lastName}`;
+    },
+    set fullName(value) {  
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+personSetName.fullName = 'John Smith';
+console.log(personSetName)
+*/
+
+// So, lets rewrite this method in order to strengthen it:
+// One simple approach is to just return if the type isn't what we wanted
+/* const personSetName = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    set fullName(value) {  
+        if (typeof value !== 'string') return; // Output will be {firstName: "Larry", lastName "Boles"} it just shows the original value
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+personSetName.fullName = null;
+console.log(personSetName);
+
+ */
+
+// Sometimes we want to report an error in our application instead of just returning:
+// This is where we need to throw an exception.
+/* 
+const person = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    set fullName(value) {  
+        if (typeof value !== 'string') 
+            throw new Error('Value is not a string');           // Note that the Error is in pascal notation with the new keyword, its a constructor function for an error object. As an argument we can pass an error message
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+person.fullName = null;
+console.log(person);
+ */
+// Some people confuse errors with exceptions but there is a slight difference. 
+/* 
+const person2 = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    set fullName(value) {  
+        const e = new Error();        // This is just a plain javascript object
+        throw e;                      // The moment we throw the error we refer to it as an exception, its something that should not have happened.
+        if (typeof value !== 'string') 
+            throw new Error('Value is not a string'); 
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+person2.fullName = null;
+console.log(person2);
+ */
+
+// Now, we have some basic error handling, it's throwing an exception but somewhere else we need to catch the exception. 
+// quite often when we catch an exception we display an error to the user.
+// here is how that is accomplished:
+// line 92 is where we obtain the exception so we need to wrap that line in a try block
+/* const person = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    set fullName(value) {  
+        if (typeof value !== 'string') 
+            throw new Error('Value is not a string');           // Note that the Error is in pascal notation with the new keyword, its a constructor function for an error object. As an argument we can pass an error message
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+try {       // One of the statements in a try block can throw an exception.
+    person.fullName = '';
+}
+catch (e) {       // Here is where we catch the exception. in paren we give an identifyer for the error object we are throwing on line 86
+    //console.log(e);   // now, the console isn't a good spot as users wouldn't see this, so we can use something else like the alert function
+    alert(e);           // This isn't recomended, as its a very old and poor way of reporting errors to users. A better way would be to display a label, like a red label, on the user interface, but that'll be a later lesson.
+}
+    console.log(person);
+ */
+
+
+
+
+// now, lets take this to the next level, instead of passing null, lets rewrite line 123 to pass an empty string.
+// when saved we don't get errors, but first name is an empty string and last name is undefined.
+// So, ideally, we want to ensure the user is typing a first name and last name.
+// So when splitting the string we can check the length of the array. *see line 116 & 117
+const person = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    set fullName(value) {  
+        if (typeof value !== 'string') 
+            throw new Error('Value is not a string');           // Note that the Error is in pascal notation with the new keyword, its a constructor function for an error object. As an argument we can pass an error message
+        const parts = value.split(' ');
+        if (parts.length !== 2)
+            throw new Error('Enter a first and last name');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+try {       // One of the statements in a try block can throw an exception.
+    person.fullName = '';
+}
+catch (e) {       // Here is where we catch the exception. in paren we give an identifyer for the error object we are throwing on line 86
+    //console.log(e);   // now, the console isn't a good spot as users wouldn't see this, so we can use something else like the alert function
+    alert(e);           // This isn't recomended, as its a very old and poor way of reporting errors to users. A better way would be to display a label, like a red label, on the user interface, but that'll be a later lesson.
+}
+console.log(person);
+
+
+// So when we throw an exception, the lines after the throw statement are not executed. We jump out of the method and control will move to the catch block.
+// There we catch the exception and do something with it.
