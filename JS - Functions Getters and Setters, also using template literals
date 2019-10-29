@@ -1,0 +1,97 @@
+// **** Functions - Getters and Setters ****
+/*
+const person = {
+    firstName: 'Larry',
+    lastName: 'Boles'
+};
+*/
+
+// lets assume we want to display a persons fullname somewhere in our app.
+// so we need to do something like this.
+// console.log(person.firstName + ' ' + lastName);
+// Or a better way using a template literal:
+// console.log(`${person.firstName} ${person.lastName}`);
+
+// The problem with this approach is that maby there are multiple places in the app where we want to display a persons name.
+// Using the template literal approach we need to repeat this in multiple locations.
+// A better approach is to define a method in the object and move the expression whereever we want it and just call that method.
+/*
+const person = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    fullName() {
+        return `${person.firstName} ${person.lastName}`;
+    }
+};
+*/
+// now whenever we want to call the persons full name we use the following:
+// console.log(person.fullName());
+
+// However there are a couple of problems with this approach.
+// #1 this is read only. we can't set the persons full name from outside of the object. IE: person.fullName = 'John Smith';
+// it would be nice if we could do this and the first name and last name were automaticly set based on what we passed.
+// Also it's not nice to call this like a method, it would be nicer if you could treat this as a property so we could drop the param at the end. IE: person.fullName;
+
+
+// This is where getters and setters come into the picture.
+
+// ***********************************
+// Getters => access properties
+// Setters => change (mutate) them.
+// ***********************************
+
+// here is how they work:
+// prefix the property with "get" like this:
+const person = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    get fullName() {                        // With "get" this is now a getter and it can be accessed like a property on line 52
+        return `${person.firstName} ${person.lastName}`;
+    }
+};
+console.log(person.fullName);  // Returns "Larry Boles"
+
+// now, to set the value from the outsie, you need a setter.
+// a setter is similar, add set keyword, then property or method, then codeblock. IE:
+const personSetter = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    get fullName() {                        
+        return `${person.firstName} ${person.lastName}`;
+    },
+    set fullName(value) {     // A setter method needs a paramter, it can be anything. In this case I'm using "value". The value will be whatever is on the right side of the assignment operator.
+
+    }
+};
+
+// lets assume the assignment for our setter is a valid string.
+// So, we need to split the string by a space. Take the parts, and set the first name and last name properties.
+
+const personSetName = {
+    firstName: 'Larry',
+    lastName: 'Boles',
+    get fullName() {                        
+        return `${personSetName.firstName} ${personSetName.lastName}`;
+    },
+    set fullName(value) {  
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+personSetName.fullName = 'John Smith';
+console.log(personSetName)
+// This returns:
+/*
+{firstName: "John", lastName: "Smith"}
+firstName: "John"
+fullName: (...)
+lastName: "Smith"
+get fullName: ƒ fullName()
+set fullName: ƒ fullName(value)
+__proto__: Object
+*/
+
+// Note the fullname showing ...
+// sometimes you may see this kind of value in console, this shows that it is a getter.
+// Click on the dots in the console to invoke the function and it returns "John Smith"
