@@ -1,0 +1,27 @@
+// **** Function Declarations vs Expressions ****
+// Function Declaration
+function walk() {
+    console.log('walk');
+}                           // Doesn't need a semicolen on a declaration at the end
+/*
+
+// Function Expression
+let run = function() {};  // Needs a semicolen at the end because whenever declaring a variable or constant it needs a termination by semicolan.
+
+// in JS functions are objects, so this is similar as setting a variable to another object.
+
+// Anonymous Function Expression
+let run = function() {
+    console.log('run');
+}; 
+
+*/
+// Named Function Expression
+let run = function run() {
+    console.log('run');
+}; 
+let move = run;  // now both move and run are pointing to the same object in memory. remember this is a reference now.
+
+// Both of these are the same result
+run();
+move();
