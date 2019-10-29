@@ -1,0 +1,31 @@
+// **** Function Hoisting****
+
+// Last lesson covered Function Declaration vs Expression
+// The key difference between these two is we can call the declared function *BEFORE* it is defined.
+
+walk();   // This works
+
+// Function Declaration
+function walk() {
+    console.log('walk');
+}                          
+
+/*
+run();   // This generates a "Uncaught Reference Error: Run is not defined" This is exactly like using a variable or constant before it is defined.
+*/
+
+// Function Expression
+let run = function() {
+    console.log('run')
+};  
+
+/*
+// Example of reference errors 
+console.log(x);  // As above, this also generates an Uncaught reference error.
+let x = 1;
+*/
+
+
+// So, why can you use a declared function before it is defined?
+// When the JS engine executes the code, all of the function declarations are moved to the TOP.
+// This is called hoisting. It's the process of moving function declarations to the top of the file and is done automaticly.
