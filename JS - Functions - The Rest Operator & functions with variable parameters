@@ -1,0 +1,43 @@
+// **** Functions - The Rest Operator ****
+// In modern JS if you want to have a function with a variable number of parameters you can use the "rest" operator
+// The rest operator is three dots, don't confuse this with the spread operator as it looks exactly the same.
+// When you use this, along with the parameter of a function, we refer to it as the "rest" operator.
+
+// lets see how it looks
+function sum(...args) {
+    console.log(args);   // returns [1, 2, 3, 4, 5, 6, 7], returns an array of 7 elements. if I remove the 3 dots it will have a single parameter called "args"
+}
+sum(1, 2, 3, 4, 5, 6, 7); 
+
+// Basicly, the rest operator when applied to a parameter will take a varying number of arguments and put them inside an array.
+// Now, if you want to get the sum of all of the numbers in an array we can use array methods like .reduce
+
+function sum2(...args) {
+    return args.reduce((a, b) => a + b);
+}
+console.log(sum2(1, 2, 3, 4, 5, 6, 7));
+// Now we have the same functionality but with less code.
+// instead of having to set a "total" variable, setting it to 0 and looping over the arguments object we can have one line of code that does the same thing.
+
+
+// lets go to the next level with it.
+// lets pretend we're going to calcuate the total cost of items within a shopping cart and that we're going to have a discount factor.
+// first we'll set a parameter for the discount, then have a varying number of items that we will get the price of.
+// next we'll change the function call so as to give a discount first, lets say 10%, then a number of item prices.
+// So, on line 29, instead of returning the sum total of all prices, we will store the sum and return the total times 1 minus discount.
+function cartSum(discount, ...prices) {
+    const total = prices.reduce((a, b) => a + b);
+    return total * (1 - discount);
+}
+console.log(cartSum(0.1, 20, 30)); // returns 45
+
+
+// now lets add another paramter after prices, let's call it someValue. Then lets add another param '1' to the function call
+function cartSum2(discount, ...prices, someValue) {
+    const total = prices.reduce((a, b) => a + b);
+    return total * (1 - discount);
+}
+console.log(cartSum2(0.1, 20, 30, 1)); 
+// This returns an error "Rest paramter must be last formal parameter"
+// So we can't have a paramter after using the rest paramter, so it should be the last paramter in a function. So any other paramters must come BEFORE the rest operator.
+// That's the reason this is called the "rest" operator.
