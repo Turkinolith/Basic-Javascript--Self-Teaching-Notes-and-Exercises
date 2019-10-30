@@ -1,0 +1,56 @@
+// **** Functions - Scope : Local vs Global ****
+
+//const message = 'hi';
+// works fine, but what if the variable is put inside of a code block?
+/*
+{
+    const message = 'hi';
+}
+
+console.log(message);
+*/
+// returns: Uncaught ReferenceError: message is not defined
+// This is all about scoping
+
+// Scope of a variable or constant determines where that variable or constant is accessable.
+// When we declare a variable with "let" or 'const' it limits their scope to the block in which they are defined.
+// So, right now, the message variable is limited to within the code block. (and VS code shows such with its color being darkened and the "declared but never read" tooltip on it.)
+
+// this is also true inside of an "if" block:
+/*
+function start() {
+    const m2 = 'hi';
+    if (true) {
+        const another = 'bye'; // this const is only accessable within its block.
+    }
+    console.log(another); // returns Uncaught ReferenceError: another is not defined
+}
+*/
+
+// The same idea applies to loops
+/*
+function start() {
+    for (let i = 0; i < 5; i++) {
+        console.log(i);         // the variable "i" is only visable to this block.
+    }
+} */
+
+// This is also possible due to scope:
+function start() {
+    const message = 'hi';
+}
+function stop() {
+    const message = 'bye';
+}
+// This is valid JS code, because the two constants are in seperate functions they don't share the same scope, so you can have two variables/constants that have the same name since they don't exist in the same space.
+
+const color = 'red';
+// This const exists outside of code blocks, it's global so it can be called from within functions or anywhere.
+// But what if you have a variable with the same name in a function as well as global?
+
+function shade() {
+    const color = 'blue';
+    console.log(color);     // returns 'blue'
+}
+// it returns blue, because local variables or local constants take precidence over globals.
+// In general, you should avoid defining global variables or constants. its considered bad practice because each function could accidently change their value and it cause bugs and problems with your programs.
