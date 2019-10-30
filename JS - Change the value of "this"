@@ -1,0 +1,100 @@
+// **** Changing the Value of This ****
+// Lets imagine the forEach method doesn't have the thisArg parameter. How can we change the value of this?
+
+// Here are a few other solutions for changing the value of "this" within a function.
+
+// #1 - Works but isn't the preferred way.
+// lets start by defining a constant in the showTags method called "self" and setting it to 'this'. *some people also call this constant "that", its personal preference.
+const video = {
+    title: 'video Title',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        const self = this;  // So at this point, self is referencing the video object. So in the callback function we can pass self to be the equivilent of "this"
+        this.tags.forEach(function(tag) {
+            console.log(self.title, tag);        
+        });                               
+    }
+};
+// video.showTags();
+
+// #2 - Earlier in the course we learned that functions are objects in JS.
+// so it has properties and methods we can access using dot notation. and with those we can change the value of this for the function.
+// The simplest is the .call method
+function playVideo() {
+    console.log(this);
+}
+//playVideo.call({ name: 'Larry'}); // returns {name: "Larry"}
+// in contrast, if we use standard function call syntax:
+//playVideo(); // returns Window {parent: Window, postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, …}
+
+// ****** APPLY ******
+// there is another method similar to "call" that is named "apply"
+//playVideo.apply({ name: 'Larry'});  // returns {name: "Larry"}
+// the difference between 'call' and 'apply' is only about passing arguments.
+// so if the function has multiple parameters we can pass them with call such as:
+//playVideo.call({ name: 'Larry'}, 1, 2);
+// But with the apply method we have to pass the arguments as an array.
+//playVideo.apply({ name: 'Larry'}, [1, 2, 3]);
+
+// ****** BIND *****
+// first param is the object we will pass as "this", but the bind method does not call our playVideo function.
+// const videoFunction = playVideo.bind({ name: 'Larry'})
+// it returns a new function and sets "this" to point to the object permanently. So no matter how we call that function
+// So no matter how we call that function 'this' will always point towards that object.
+// You can store that function return somewhere like a constant.
+// videoFunction();
+// or instead you can just immediately call it by adding parentheses to the end
+// playVideo.bind({ name: 'Larry'})();
+
+
+// **** Applied ****
+// let's go back to our original function.
+/* 
+const video2 = {
+    title: 'video Title',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag);        
+        });                               
+    }
+};
+video2.showTags();
+ */
+
+// Now let's fix the 'this" within the callback function of the "forEach" using the bind method.
+/* 
+const video2 = {
+    title: 'video2 Title',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag);        
+        }.bind(this));                     // Why use (this) for the bind? Because we're still in the scope of the "showTags" method, not the ForEach callback.
+    }                                      // So our scope is still correctly applied to the video2 object.
+};
+video2.showTags();
+ */
+
+//  *********   ES6  ARROW FUNCTION ***********
+// There is a newer way to solve this as well using ES6 arrow functions.
+// Arrow functions inherit the "this" value!
+// Using this notation we don't have to do anything extra to pass along the "this" value.
+// lets return to the original script and rewrite it with arrow notation
+
+const video3 = {
+    title: 'video3 Title',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(tag => {
+            console.log(this.title, tag);        
+        });                               
+    }
+};
+video3.showTags();
+
+// ******* RECAP ************
+// 3 ways to change value of "this"
+// use "self" approach
+// use "bind" method
+// use arrow notation      <-- The modern and preferred approach
