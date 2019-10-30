@@ -1,0 +1,13 @@
+// ***** Exercise - Area of Circle *****
+// create a circle object using the object literal syntax.
+// should have a radius property that we can read/write to from outside of the object
+// should have a area property that calculates the area of the circle, that property should be read only.
+
+const circle = {
+    radius: 1,
+    get area() {
+        return Math.PI * (this.radius ** 2);   // Remember the area of a circle is pi times radius, squared.
+    }
+}
+console.log(circle.radius);
+console.log(circle.area);
