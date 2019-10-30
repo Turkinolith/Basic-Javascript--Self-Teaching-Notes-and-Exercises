@@ -1,0 +1,33 @@
+// ***** Exercise - Error Handling *****
+
+// earlier in the course there was an array exercise to count occurances of a given number within an array.
+// in the below function there is a problem. We are assuming that the first paramter is a valid array.
+// what happens if we call the function with a bool? we get an error "array.reduce is not a function" similar for null.
+
+// Objective: throw an exception if the first param is not an array
+// wrap the call of the function within a try/catch block. 
+// Catch the exception and log it on the console.
+
+
+//Reference Section
+/* 
+const numbers = [1, 2, 3, 4, 3, 4, 5];
+const count = reduceOccurrences(numbers, 3);
+console.log(count);
+
+function reduceOccurrences(arr, search) {
+    return arr.reduce((accumulator, currentvalue) => { return (search === currentvalue) ? ++accumulator : accumulator += 0;}, 0);
+}
+*/
+
+try {
+    const count = reduceOccurrences(null, 3);
+    console.log(count);
+} catch (e) {
+    console.log(e.message);         // Learned here that error.prototype.message (or just errror.message) is how to access the text of the error.
+}
+
+function reduceOccurrences(arr, search) {
+    if (!Array.isArray(arr)) throw new Error('Value is not an array');
+    return arr.reduce((accumulator, currentvalue) => { return (search === currentvalue) ? ++accumulator : accumulator += 0;}, 0);
+}
