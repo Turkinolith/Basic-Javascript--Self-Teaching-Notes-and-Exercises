@@ -1,0 +1,52 @@
+// ***** Exercise - Sum of Arguments *****
+
+// write a function called sum() that takes a varying number of arguments and returns their sum.
+// IE: sum(1, 2, 3, 4) => 10
+// for extra challenge, make it so that the function can take an array and still return the same result.
+// IE: sum([1, 2, 3, 4]) => 10
+// as part of this challenge you will need to detect if the argument passed is an array, you can check using Array.isArray();
+
+function simpleSum() {
+    let total = 0;
+    for (const value of arguments) {
+        total += value;
+    }
+    return total;
+}
+console.log(simpleSum(1, 2, 3, 4, 5, 6));
+
+
+// Pass #1
+function challengeSum() {
+    if (Array.isArray(arguments[0])) {
+        let total = 0;
+        for (const value of arguments[0]) {
+            total += value;
+        }
+    return total;
+    }
+    let total = 0;
+    for (const value of arguments) {
+        total += value;
+    }
+    return total;
+}
+console.log('challenge #1 is: ', challengeSum([1, 2, 3, 4, 5]));
+console.log('challenge #2 is: ',challengeSum(1, 2, 3, 4, 5, 6));
+
+// Refactor of ChallengeSum
+function challengeSumTwo(...items) {
+    if (Array.isArray(items[0]) && items.length === 1){
+        items = [...items[0]];
+    }
+    return items.reduce((a, b) => a + b);
+}
+
+console.log('challengeSumTwo #1 is: ', challengeSumTwo([1, 2, 3, 4, 5]));
+console.log('challengeSumTwo #2 is: ',challengeSumTwo(1, 2, 3, 4, 5, 6));
+
+// Instructor version uses the rest operator which I should have used instead of the old method
+function sum(...items) {
+    return items.reduce((a, b) => a + b);
+}
+console.log('instructor sum: ', sum(1, 2, 3, 4, 5, 6));
