@@ -1,0 +1,53 @@
+// **** Let vs Var ****
+/*
+function start() {
+    for (let i = 0; i < 5; i++) {
+        console.log(i);
+    }
+    console.log(i);
+}
+*/
+// in last lesson learned that the i is only accessable within the code block of the "for" loop.
+// the console log outside of the for loop returns an error.
+
+// now, lets change the 'let' to var on variable 'i'
+function start() {
+    for (var i = 0; i < 5; i++) {
+        console.log(i);
+    }
+    console.log(i);
+}
+start();    // returns 0, 1, 2, 3, 4, 5
+// Turns out that 'i' is now accessable outside of the for block. It turns out that in the last iteration i becomes 5, because 5 is not < 5 the loop terminates, 
+// but the console.log outside of the loop picks it up to display 5.
+
+// So, this is the issue with VAR, when a variable is declared with VAR its scope is not limited to the code block in which it is defined. it's limited to the FUNCTION in which it is defined.
+// This is not how many programing languages work. its a quirk of JS.
+
+// with ES6 (also called ES2015) it introduced: let, const.  These are "BLOCK SCOPED" variables.
+// VAR is "FUNCTION SCOPED" variables.
+
+// Example:
+function start2() {
+    for (var i = 0; i < 5; i++) {
+        if (true) {
+            var color = 'red';      // in any other programing language, the 'color' variable should ONLY be accessable within the if statement code block. but because it is called with var
+        }                           // it is accessable ANYWHERE within the function.
+    }
+    console.log(color);
+}
+start2();
+// So, the function scope is the first problem with Var.
+
+
+var color = 'red';  // When var is used outside of a function this creates a global variable and attaches it to the window object in the browser.
+// window.color returns 'red'
+let age = 30;       // When let is used to create a global variable, it is NOT attached to the window object.
+// window.age returns undefined.
+
+// so why is this bad to attach a variable to the window object?
+// because window object is central there is only one instance of it. if you are using a 3rd party library and it is using a variable with the same name that variable can overwrite your variable.
+// so avoid storing stuff on the window object as it can cause all sorts of problems.
+
+// for those curious, when you define a function it is technicly a global function and is added to the window object.
+// That is also bad practice. later on when we go over modules we will talk about encapsulating these functions in seperate modules. 
