@@ -1,0 +1,105 @@
+// **** This keyword ****
+// "this" is refering to the "OBJECT" that is executing the current function.
+
+// ***********  Short Notes: ********
+// "this" inside a method points to the object that the method is part of.
+// "this" for a non-attached function points to the window object on browsers or the global object on node.
+// "this" when used in a function called by the "new" keyword, which is the case for constructor functions, points "this" towards the empty object that the "new" keyword generates.
+
+
+// if function is part of an object, its a method so "this" on a method refers to the object that the method is part of
+// Method -> obj
+
+// Else, if a function isn't attached to an object, "this" refers to global scope. In a browser it is the window object, in node the global object.
+// function -> global (window, global)
+
+
+// ************************ Method -> obj *******************
+/* 
+const video = {
+    title: 'a',
+    play() {
+        console.log(this);
+    }
+};
+video.play();  // you get the video object out on console. so "this" is refering to the video object since the method calling it is attached to it.
+ */
+
+
+// by the same token, we can later add a method to the object ad we will get the same result.
+/* 
+const video = {
+    title: 'a',
+    play() {
+        console.log('play');
+    }
+};
+
+video.stop = function() {
+    console.log(this);
+}
+
+video.play();
+video.stop();
+ */
+
+
+ // *********************** Function -> global (window for browsers, global object in node) *****************
+/* 
+function playVideo() {
+    console.log(this);
+}
+
+playVideo();
+ */
+// Now, what if this is a constructor function? We call constructor functions using the "new" operator.
+/* 
+function Video(title) {
+    this.title = title;
+    console.log(this);
+}
+const v = new Video('a');
+ */
+// Returns the object: Video {title: "a"}
+// This works because the "new" keyword changes this to point to an empty object which the constructor function populates.
+
+
+// Last Example
+const video = {
+    title: 'newtitle',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(function(tag) {   // Tags correctly points out "a", "b", "c", but trying to print the title shows "undefined"
+            console.log(this, tag);         // remove the .title from this to debug it: In this case, "this" is pointing to the window object. Why is that? because the ForEach function is a regular function,
+        });                                 //  its not part of the method so its global scope. The ONLY method here, is "showTags()"
+    }
+};
+video.showTags();
+// So, how to fix it so that we can display the title of each video next to the tag?
+
+// There are a couple of solutions:
+// One solution is the for-each method has two parameters, first is the callback function, the second is "ThisArg". ThisArge is we can pass an object here and "this" will reference that object.
+const video2 = {
+    title: 'newtitle',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag);        
+        }, video2);                               
+    }
+};
+video2.showTags();
+
+// alternatively, since the ForEach is part of the showTags method, we can still pass "this" to reference its owning object:
+const video3 = {
+    title: 'video3 Title',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag);        
+        }, this);                               
+    }
+};
+video3.showTags();
+
+// Not all JS functions give the ability to pass "this" so that will be covered in the next topic.
