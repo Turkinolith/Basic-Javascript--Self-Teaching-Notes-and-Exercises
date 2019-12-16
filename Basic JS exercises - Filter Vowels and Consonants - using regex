@@ -1,0 +1,8 @@
+function vowelsAndConsonants(string) {
+    let vowels = string.match(/[aeiou]/gi);
+    let consonants = string.match(/[^aeiou$]/gi);
+	let merged = vowels.concat(consonants);
+	for (element of merged) {
+		console.log(element);
+	}
+}
